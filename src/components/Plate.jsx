@@ -1,17 +1,21 @@
 import { styled } from 'styled-components';
 import PropTypes from 'prop-types';
 import fontSize from '../styles/fontSize';
+import color from '../styles/color';
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   padding: 0.25rem;
+  gap: 0.125rem;
   cursor: pointer;
   &&:hover {
-    background-color: green;
+    background-color: ${color.highlight} !important;
+    opacity: 1 !important;
   }
   > * {
     margin: 0;
@@ -20,17 +24,16 @@ const Wrapper = styled.div`
   }
 `;
 
-export default function Plate({ param, value, style }) {
+export default function Plate({ param, value, style, children }) {
   return (
     <Wrapper style={style}>
-      <h3>{param}</h3>
+      {children}
       <p>{value}</p>
     </Wrapper>
   );
 }
 
 Plate.propTypes = {
-  param: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   style: PropTypes.object.isRequired,
 };

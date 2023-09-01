@@ -1,5 +1,6 @@
 import { styled } from 'styled-components';
 import PropTypes from 'prop-types';
+import { Thermometer, Droplet, Wind, Cloud } from 'react-feather';
 import Plate from './Plate';
 import color from '../styles/color';
 
@@ -26,7 +27,9 @@ export default function Dashboard({ height }) {
         param={'Temperature'}
         value={'12%'}
         style={{ height: height, border: `solid ${color.secondary} 3px` }}
-      ></Plate>
+      >
+        <Thermometer />
+      </Plate>
       <Plate
         param={'Humidity'}
         value={'12%'}
@@ -35,7 +38,9 @@ export default function Dashboard({ height }) {
           border: `double ${color.secondary} 4px`,
           boxShadow: `0px 0px 6px ${color.ternary}`,
         }}
-      ></Plate>
+      >
+        <Droplet />
+      </Plate>
       <Plate
         param={'Humidity'}
         value={'12%'}
@@ -45,7 +50,9 @@ export default function Dashboard({ height }) {
           border: `solid black #83828a`,
           boxShadow: `-2px 2px 10px #83828a`,
         }}
-      ></Plate>
+      >
+        <Wind />
+      </Plate>
       <Plate
         param={'Humidity'}
         value={'12%'}
@@ -54,7 +61,9 @@ export default function Dashboard({ height }) {
           backgroundColor: `${color.quaternary}`,
           opacity: '0.5',
         }}
-      ></Plate>
+      >
+        <Cloud />
+      </Plate>
     </Wrapper>
   );
 }

@@ -43,9 +43,8 @@ function App() {
         <AppTitle />
       </Header>
       <div>
-        <Dashboard height={'7rem'} />
+        <Dashboard height={'5rem'} />
       </div>
-      <h1 style={{ border: 'solid red 3px' }}>Hello</h1>
     </Wrapper>
   );
 }

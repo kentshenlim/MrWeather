@@ -1,4 +1,5 @@
 import { styled } from 'styled-components';
+import { Search } from 'react-feather';
 import color from '../styles/color';
 import fontSize from '../styles/fontSize';
 
@@ -29,6 +30,8 @@ const Input = styled.input`
 
 const Button = styled.button`
   background-color: ${color.secondary};
+  display: flex;
+  align-items: center;
   @media only screen and (max-width: 1100px) {
     padding: 0.6rem;
   }
@@ -45,7 +48,7 @@ export default function SearchBar() {
     <Wrapper>
       <Input placeholder="Search City..."></Input>
       <Button>
-        <ion-icon name="search-outline"></ion-icon>
+        <Search color={color.quaternary} />
       </Button>
     </Wrapper>
   );

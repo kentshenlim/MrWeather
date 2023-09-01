@@ -24,4 +24,3 @@ Weather app with dynamic background based on weather.
 - TODO: humidity, feels like, wind, cloud
 - TODO: icon for the four, and the plate border style (opacity for wind) should
   based on the value
-- TODO: propTypes check
