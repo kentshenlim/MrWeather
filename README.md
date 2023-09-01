@@ -22,3 +22,4 @@ Weather app with dynamic background based on weather.
   allowed, including auto complete
 - TODO: show clock
 - TODO: MrWeather icon
+- TODO: humidity, feels like, wind, cloud
