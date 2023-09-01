@@ -9,8 +9,14 @@ const Wrapper = styled.div`
   width: 70%;
   flex-wrap: wrap;
   gap: 0.5rem;
-  border-bottom: 1px solid;
-  border-image: linear-gradient(to right, #000 50%, transparent 50%) 100% 1;
+  border-bottom: 3px solid;
+  border-image: linear-gradient(
+      to right,
+      ${color.secondary} 50%,
+      transparent 50%
+    )
+    100% 1;
+  padding-bottom: 0.5rem;
 `;
 
 export default function Dashboard({ height }) {
@@ -52,3 +58,7 @@ export default function Dashboard({ height }) {
     </Wrapper>
   );
 }
+
+Dashboard.propTypes = {
+  height: PropTypes.string.isRequired,
+};

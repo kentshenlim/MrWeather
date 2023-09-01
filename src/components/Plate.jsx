@@ -1,4 +1,5 @@
 import { styled } from 'styled-components';
+import PropTypes from 'prop-types';
 import fontSize from '../styles/fontSize';
 
 const Wrapper = styled.div`
@@ -8,6 +9,10 @@ const Wrapper = styled.div`
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   padding: 0.25rem;
+  cursor: pointer;
+  &&:hover {
+    background-color: green;
+  }
   > * {
     margin: 0;
     padding: 0;
@@ -23,3 +28,9 @@ export default function Plate({ param, value, style }) {
     </Wrapper>
   );
 }
+
+Plate.propTypes = {
+  param: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  style: PropTypes.object.isRequired,
+};
