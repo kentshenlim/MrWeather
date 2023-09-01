@@ -2,6 +2,7 @@ import { styled } from 'styled-components';
 import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
 import color from '../styles/color';
+import fontSize from '../styles/fontSize';
 
 const Wrapper = styled.nav`
   display: flex;
@@ -9,7 +10,7 @@ const Wrapper = styled.nav`
   gap: 1rem;
   width: 50%;
   height: 6rem;
-  & > :last-child {
+  > :last-child {
     flex: 1 1 0;
   }
   border-bottom: solid ${color.secondary} 3px;
@@ -21,9 +22,13 @@ const LeftWrapper = styled.div`
   width: 50%;
   min-width: 180px;
   flex-shrink: 0;
-  & > * {
+  > * {
     margin: 0;
     text-align: left;
+    font-size: ${fontSize.smallest};
+  }
+  > h2 {
+    font-size: ${fontSize.normal};
   }
 `;
 

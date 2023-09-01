@@ -1,4 +1,6 @@
 import { styled } from 'styled-components';
+import color from '../styles/color';
+import fontSize from '../styles/fontSize';
 
 const Wrapper = styled.div`
   display: flex;
@@ -6,7 +8,7 @@ const Wrapper = styled.div`
   overflow: hidden;
   border-radius: 2rem;
   &:has(> input:focus) {
-    border: solid red 1px;
+    border: solid ${color.accent} 2px;
   }
 `;
 
@@ -14,7 +16,7 @@ const Input = styled.input`
   flex: 1 1 0;
   min-width: 0;
   padding-left: 1rem;
-  font-size: 1.25rem;
+  font-size: ${fontSize.small};
   border: transparent;
   &:focus {
     outline: none;

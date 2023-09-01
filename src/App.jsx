@@ -1,6 +1,7 @@
 import { styled } from 'styled-components';
 import Navbar from './components/Navbar';
 import color from './styles/color';
+import fontSize from './styles/fontSize';
 import './App.css';
 
 const Wrapper = styled.div`
@@ -10,7 +11,7 @@ const Wrapper = styled.div`
   margin: 0 auto;
   padding: 1rem;
   padding-block: 0.75rem;
-  box-shadow: -10px 10px 20px ${color.accent};
+  box-shadow: -15px 10px 25px ${color.accent};
   background: rgb(190, 209, 221);
   background: linear-gradient(
     180deg,
@@ -19,14 +20,28 @@ const Wrapper = styled.div`
   );
 `;
 
+const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+`;
+
+const AppTitle = styled.h1`
+  margin: 0;
+  font-size: ${fontSize.largest};
+`;
+
 function App() {
   return (
     <Wrapper>
-      <Navbar
-        location="Kuala Lumpur"
-        dateStr="23 July 2023"
-        timeStr="12:51 pm"
-      />
+      <Header>
+        <Navbar
+          location="Kuala Lumpur"
+          dateStr="23 July 2023"
+          timeStr="12:51 pm"
+        />
+        <AppTitle>MrWeather</AppTitle>
+      </Header>
     </Wrapper>
   );
 }
