@@ -4,7 +4,7 @@ import fontSize from '../styles/fontSize';
 
 const Wrapper = styled.div`
   display: flex;
-  min-width: 0;
+  min-width: 3rem;
   overflow: hidden;
   border-radius: 2rem;
   &:has(> input:focus) {
@@ -18,12 +18,27 @@ const Input = styled.input`
   padding-left: 1rem;
   font-size: ${fontSize.small};
   border: transparent;
+  background-color: ${color.ternary};
   &:focus {
     outline: none;
   }
+  @media only screen and (max-width: 850px) {
+    display: none;
+  }
 `;
 
-const Button = styled.button``;
+const Button = styled.button`
+  background-color: ${color.secondary};
+  @media only screen and (max-width: 1100px) {
+    padding: 0.6rem;
+  }
+  @media only screen and (max-width: 850px) {
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 50%;
+    margin-left: auto;
+  }
+`;
 
 export default function SearchBar() {
   return (

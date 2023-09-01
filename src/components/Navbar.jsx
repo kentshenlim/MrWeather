@@ -7,7 +7,6 @@ import fontSize from '../styles/fontSize';
 const Wrapper = styled.nav`
   display: flex;
   align-items: center;
-  gap: 1rem;
   width: 50%;
   height: 6rem;
   > :last-child {
@@ -19,7 +18,7 @@ const Wrapper = styled.nav`
 const LeftWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 40%;
   min-width: 180px;
   flex-shrink: 0;
   > * {
