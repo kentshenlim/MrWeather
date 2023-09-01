@@ -4,7 +4,8 @@ const color = {
   secondary: '#758AA0',
   ternary: '#C1C5D4',
   quaternary: '#E7D8D9',
-  highlight: '#F7CCAC',
+  highlight: '#F5C5AB',
+  highlightDim: '#E59272',
 };
 
 export default color;

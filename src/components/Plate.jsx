@@ -16,6 +16,7 @@ const Wrapper = styled.div`
   &&:hover {
     background-color: ${color.highlight} !important;
     opacity: 1 !important;
+    box-shadow: 0px 0px 10px ${color.highlightDim} !important;
   }
   > * {
     margin: 0;
