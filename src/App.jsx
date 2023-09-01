@@ -1,6 +1,7 @@
 import { styled } from 'styled-components';
 import Navbar from './components/Navbar';
 import AppTitle from './components/AppTitle';
+import Dashboard from './components/Dashboard';
 import color from './styles/color';
 import fontSize from './styles/fontSize';
 import './App.css';
@@ -19,12 +20,14 @@ const Wrapper = styled.div`
     rgba(190, 209, 221, 1) 0%,
     rgba(54, 73, 112, 1) 100%
   );
+  > * {
+    padding: 0 1rem;
+  }
 `;
 
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 0 1rem;
   height: 7rem;
 `;
 
@@ -39,6 +42,10 @@ function App() {
         />
         <AppTitle />
       </Header>
+      <div>
+        <Dashboard height={'7rem'} />
+      </div>
+      <h1 style={{ border: 'solid red 3px' }}>Hello</h1>
     </Wrapper>
   );
 }

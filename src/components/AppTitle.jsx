@@ -18,7 +18,7 @@ const TitleAnchor = styled.a``;
 
 const TitleImg = styled.img`
   width: 80%;
-  margin-top: -1rem;
+  margin-top: -0.5rem;
 `;
 
 export default function AppTitle() {
