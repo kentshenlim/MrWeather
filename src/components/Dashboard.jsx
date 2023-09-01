@@ -7,8 +7,8 @@ import color from '../styles/color';
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  width: 70%;
   flex-wrap: wrap;
+  width: 50%;
   gap: 0.5rem;
   border-bottom: 3px solid;
   border-image: linear-gradient(

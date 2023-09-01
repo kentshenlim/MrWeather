@@ -24,7 +24,7 @@ const Wrapper = styled.div`
   }
 `;
 
-export default function Plate({ param, value, style, children }) {
+export default function Plate({ value, style, children }) {
   return (
     <Wrapper style={style}>
       {children}
@@ -36,4 +36,5 @@ export default function Plate({ param, value, style, children }) {
 Plate.propTypes = {
   value: PropTypes.string.isRequired,
   style: PropTypes.object.isRequired,
+  children: PropTypes.node.isRequired,
 };
