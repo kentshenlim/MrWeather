@@ -1,6 +1,7 @@
 import { styled } from 'styled-components';
-import SearchBar from './SearchBar';
 import PropTypes from 'prop-types';
+import SearchBar from './SearchBar';
+import color from '../styles/color';
 
 const Wrapper = styled.nav`
   display: flex;
@@ -11,7 +12,7 @@ const Wrapper = styled.nav`
   & > :last-child {
     flex: 1 1 0;
   }
-  border-bottom: solid black 3px;
+  border-bottom: solid ${color.secondary} 3px;
 `;
 
 const LeftWrapper = styled.div`

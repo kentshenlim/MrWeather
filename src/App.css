@@ -2,9 +2,14 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  border: solid green 3px;
   width: 100vw;
   height: 100vh;
-  min-width: 550px;
-  min-height: 620px;
+  min-width: 520px;
+  min-height: 550px;
+  background: rgb(154, 173, 192);
+  background: linear-gradient(
+    0deg,
+    rgba(154, 173, 192, 1) 0%,
+    rgba(191, 209, 219, 1) 100%
+  );
 }
