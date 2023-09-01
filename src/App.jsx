@@ -1,5 +1,6 @@
 import { styled } from 'styled-components';
 import Navbar from './components/Navbar';
+import AppTitle from './components/AppTitle';
 import color from './styles/color';
 import fontSize from './styles/fontSize';
 import './App.css';
@@ -24,11 +25,7 @@ const Header = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 0 1rem;
-`;
-
-const AppTitle = styled.h1`
-  margin: 0;
-  font-size: ${fontSize.largest};
+  height: 7rem;
 `;
 
 function App() {
@@ -40,7 +37,7 @@ function App() {
           dateStr="23 July 2023"
           timeStr="12:51 pm"
         />
-        <AppTitle>MrWeather</AppTitle>
+        <AppTitle />
       </Header>
     </Wrapper>
   );
