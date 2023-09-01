@@ -4,8 +4,9 @@ import './App.css';
 
 const Wrapper = styled.div`
   border: solid red 3px;
-  width: 100%;
+  width: 90%;
   height: 100%;
+  margin: 0 auto;
   padding: 1rem;
 `;
 
