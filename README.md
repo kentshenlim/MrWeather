@@ -1,8 +1,23 @@
-# React + Vite
+# MrWeather
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Weather app with dynamic background based on weather.
 
-Currently, two official plugins are available:
+## Project Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tools
+
+- [styled-components](https://github.com/styled-components/styled-components)
+- [RTL](https://testing-library.com/docs/react-testing-library/intro/)
+- [msw](https://github.com/mswjs/msw)
+- [weather api](https://www.weatherapi.com/)
+
+## ToDo
+
+- TODO: set up Vitest and write test first
+- TODO: look for 3D background method
+- TODO: test include msw for fetching
+- TODO: way to hide API key
+- TODO: toggle Fahrenheit or Celsius
+- TODO: location search, including init location and default location is not
+  allowed, including auto complete
+- TODO: show clock
