@@ -8,18 +8,17 @@ const Wrapper = styled.nav`
   gap: 1rem;
   width: 50%;
   height: 6rem;
-  border: solid green 3px;
   & > :last-child {
     flex: 1 1 0;
-    border: solid black 3px;
   }
-  /* border-bottom: solid black 3px; */
+  border-bottom: solid black 3px;
 `;
 
 const LeftWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  border: solid purple 3px;
+  width: 50%;
+  min-width: 180px;
   flex-shrink: 0;
   & > * {
     margin: 0;

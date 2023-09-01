@@ -8,6 +8,7 @@ const Wrapper = styled.div`
   height: 100%;
   margin: 0 auto;
   padding: 1rem;
+  padding-block: 0.75rem;
 `;
 
 function App() {
