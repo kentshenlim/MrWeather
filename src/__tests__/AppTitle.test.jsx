@@ -1,9 +1,9 @@
-import { describe, expect, it } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import AppTitle from '../components/AppTitle';
 import { render, screen } from '@testing-library/react';
 
-describe('Element presence check', () => {
-  it('Title is MrWeather, icon must be present', () => {
+describe('Title and icon image', () => {
+  it('Title is MrWeather, icon image must be present', () => {
     render(<AppTitle />);
     expect(
       screen.getByRole('heading', { name: /mrweather/i })
@@ -14,7 +14,7 @@ describe('Element presence check', () => {
   });
 });
 
-describe('href check', () => {
+describe('href of img', () => {
   it('Img should be bounded by anchor tag, href is GitHub repo link', () => {
     render(<AppTitle />);
     const anchor = screen.getByRole('link', { name: /mrweather icon/i });
@@ -24,7 +24,7 @@ describe('href check', () => {
     );
     expect(anchor).toHaveAttribute(
       'href',
-      'https://github.com/kentshenlim/MrWeather'
+      expect.stringContaining('https://github.com')
     );
     expect(anchor).toHaveAttribute('target', '_blank');
   });

@@ -1,5 +1,5 @@
 import { screen, render } from '@testing-library/react';
-import { expect } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import Plate from '../components/Plate';
 
 describe('Props check', () => {

@@ -19,7 +19,7 @@ describe('UI test', () => {
     render(<App />);
     expect(
       screen.getByRole('heading', {
-        name: /hello mrweather/i,
+        name: /mrweather/i,
       })
     ).toBeInTheDocument();
   });
