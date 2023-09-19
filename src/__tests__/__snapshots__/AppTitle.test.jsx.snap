@@ -1,5 +1,26 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`Match snapshot 1`] = `
+<div>
+  <div
+    class="sc-bcPKhP hNWpLB"
+  >
+    <h1>
+      MrWeather
+    </h1>
+    <a
+      href="https://github.com/kentshenlim/MrWeather"
+      target="_blank"
+    >
+      <img
+        alt="MrWeather Icon"
+        src="/src/assets/img/mrWeather.png"
+      />
+    </a>
+  </div>
+</div>
+`;
+
 exports[`Snapshot test > Match snapshot 1`] = `
 <div>
   <div

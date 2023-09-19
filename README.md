@@ -16,7 +16,6 @@ Weather app with dynamic background based on weather.
 - TODO: set up Vitest and write test first
 - TODO: look for 3D background method
 - TODO: test include msw for fetching
-- TODO: way to hide API key
 - TODO: toggle Fahrenheit or Celsius
 - TODO: location search, including init location and default location is not
   allowed, including auto complete
