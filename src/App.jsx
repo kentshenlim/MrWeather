@@ -2,6 +2,7 @@ import { styled } from 'styled-components';
 import Navbar from './components/Navbar';
 import AppTitle from './components/AppTitle';
 import Dashboard from './components/Dashboard';
+import HourForecast from './components/HourForecast';
 import color from './styles/color';
 import fontSize from './styles/fontSize';
 import './App.css';
@@ -20,8 +21,13 @@ const Wrapper = styled.div`
     rgba(190, 209, 221, 1) 0%,
     rgba(54, 73, 112, 1) 100%
   );
+  display: flex;
+  flex-direction: column;
   > * {
     padding: 0 1rem;
+  }
+  > :last-child {
+    margin-top: auto;
   }
 `;
 
@@ -30,6 +36,17 @@ const Header = styled.div`
   justify-content: space-between;
   height: 7rem;
 `;
+
+const mockData = [
+  ['1000', 23],
+  ['1300', 25],
+  ['1600', 26],
+  ['1900', 23],
+  ['2200', 22],
+  ['0100', 21],
+  ['0400', 19],
+  ['0700', 20],
+];
 
 function App() {
   return (
@@ -45,6 +62,7 @@ function App() {
       <div>
         <Dashboard height={'5rem'} />
       </div>
+      <HourForecast timeTempData={mockData} />
     </Wrapper>
   );
 }

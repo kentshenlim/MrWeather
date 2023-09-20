@@ -1,8 +1,34 @@
 import { styled } from 'styled-components';
-import PropTypes from 'prop-types';
+import color from '../styles/color';
+import fontSize from '../styles/fontSize';
 
 const Table = styled.table`
-  border: solid red 3px;
+  width: 100%;
+  color: ${color.primary};
+  border-collapse: collapse;
+  & tr:first-child {
+    border-bottom: solid ${color.secondary} 2px;
+    height: 4rem;
+  }
+  & th,
+  & td {
+    padding: 0.5rem;
+  }
+  & th:not(:first-child),
+  & td:not(:first-child) {
+    border-left: solid ${color.secondary} 2px;
+  }
+  & th {
+    font-size: ${fontSize.small};
+  }
+  & td {
+    font-size: ${fontSize.smallest};
+  }
+  @media only screen and (max-width: 800px) {
+    & th {
+      font-size: ${fontSize.smallest};
+    }
+  }
 `;
 
 export default function HourForecast({ timeTempData }) {
