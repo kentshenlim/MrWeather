@@ -64,7 +64,7 @@ export default function ForecastTable({ timeTempData }) {
         style={{
           backgroundColor:
             activeIdx == idx ? color.highlightDim : 'transparent',
-          color: activeIdx == idx ? color.primary : 'inherit',
+          color: activeIdx == idx ? color.accent : 'inherit',
           boxShadow:
             activeIdx == idx ? `0px 0px 10px ${color.highlightDim}` : 'none',
         }}
@@ -87,7 +87,7 @@ export default function ForecastTable({ timeTempData }) {
         style={{
           backgroundColor:
             activeIdx == idx ? color.highlightDim : 'transparent',
-          color: activeIdx == idx ? color.primary : 'inherit',
+          color: activeIdx == idx ? color.accent : 'inherit',
           boxShadow:
             activeIdx == idx ? `0px 0px 10px ${color.highlightDim}` : 'none',
         }}
