@@ -97,7 +97,7 @@ function App() {
         <CornerDownLeft />
       </ToggleButton>
       <ForecastTable timeTempData={isHourly ? mockDataHourly : mockDataDaily} />
-      <SunClock />
+      <SunClock time={new Date()} />
     </Wrapper>
   );
 }

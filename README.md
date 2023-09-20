@@ -28,3 +28,4 @@ Weather app with dynamic background based on weather.
   (might need two different components then render conditionally based on state)
 - TODO: data processor, APP must received processed data only
 - TODO: github repo: click MrWeather's eyes or forehead
+- TODO: loading screen
