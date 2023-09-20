@@ -1,4 +1,5 @@
 import { styled } from 'styled-components';
+import { useState } from 'react';
 import Navbar from './components/Navbar';
 import AppTitle from './components/AppTitle';
 import Dashboard from './components/Dashboard';
@@ -37,7 +38,7 @@ const Header = styled.div`
   height: 7rem;
 `;
 
-const mockData = [
+const mockDataHourly = [
   ['1000', 23],
   ['1300', 25],
   ['1600', 26],
@@ -62,7 +63,7 @@ function App() {
       <div>
         <Dashboard height={'5rem'} />
       </div>
-      <ForecastTable timeTempData={mockData} />
+      <ForecastTable timeTempData={mockDataHourly} />
     </Wrapper>
   );
 }

@@ -51,6 +51,15 @@ export default function ForecastTable({ timeTempData }) {
     setActiveIdx(-1);
   }
 
+  function getDynamicStyle(idx) {
+    return {
+      backgroundColor: activeIdx == idx ? color.highlightDim : 'transparent',
+      color: activeIdx == idx ? color.accent : 'inherit',
+      boxShadow:
+        activeIdx == idx ? `0px 0px 10px ${color.highlightDim}` : 'none',
+    };
+  }
+
   const timeArrJSX = timeTempData.map((arr, idx) => {
     return (
       <th
@@ -61,13 +70,7 @@ export default function ForecastTable({ timeTempData }) {
         onMouseOut={() => {
           handleMouseOut(idx);
         }}
-        style={{
-          backgroundColor:
-            activeIdx == idx ? color.highlightDim : 'transparent',
-          color: activeIdx == idx ? color.accent : 'inherit',
-          boxShadow:
-            activeIdx == idx ? `0px 0px 10px ${color.highlightDim}` : 'none',
-        }}
+        style={getDynamicStyle(idx)}
       >
         {arr[0]}
       </th>
@@ -84,13 +87,7 @@ export default function ForecastTable({ timeTempData }) {
         onMouseOut={() => {
           handleMouseOut(idx);
         }}
-        style={{
-          backgroundColor:
-            activeIdx == idx ? color.highlightDim : 'transparent',
-          color: activeIdx == idx ? color.accent : 'inherit',
-          boxShadow:
-            activeIdx == idx ? `0px 0px 10px ${color.highlightDim}` : 'none',
-        }}
+        style={getDynamicStyle(idx)}
       >
         {arr[1]}
       </td>
