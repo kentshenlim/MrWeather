@@ -26,3 +26,5 @@ Weather app with dynamic background based on weather.
 - TODO: for bottom, show two things (switch on toggle). The first: 3 hour
   interval from current hour, the weather; second: weather of the following days
   (might need two different components then render conditionally based on state)
+- TODO: data processor, APP must received processed data only
+- TODO: github repo: click MrWeather's eyes or forehead

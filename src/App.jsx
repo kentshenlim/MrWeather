@@ -1,8 +1,10 @@
 import { styled } from 'styled-components';
 import { useState } from 'react';
+import { CornerDownLeft } from 'react-feather';
 import Navbar from './components/Navbar';
 import AppTitle from './components/AppTitle';
 import Dashboard from './components/Dashboard';
+import FeelsLike from './components/FeelsLike';
 import ForecastTable from './components/ForecastTable';
 import color from './styles/color';
 import fontSize from './styles/fontSize';
@@ -27,15 +29,25 @@ const Wrapper = styled.div`
   > * {
     padding: 0 1rem;
   }
-  > :last-child {
-    margin-top: auto;
-  }
 `;
 
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
   height: 7rem;
+`;
+
+const ToggleButton = styled.button`
+  margin-top: auto;
+  margin-left: auto;
+  background-color: transparent;
+  color: ${color.ternary};
+  &:hover {
+    color: ${color.highlight};
+  }
+  &:active {
+    transform: scale(1.1);
+  }
 `;
 
 const mockDataHourly = [
@@ -49,7 +61,23 @@ const mockDataHourly = [
   ['0700', 20],
 ];
 
+const mockDataDaily = [
+  ['mon', 23],
+  ['tue', 23],
+  ['wed', 23],
+  ['thu', 23],
+  ['fri', 23],
+  ['sat', 23],
+  ['sun', 23],
+];
+
 function App() {
+  const [isHourly, setIsHourly] = useState(true);
+
+  function handleClickToggle() {
+    setIsHourly(!isHourly);
+  }
+
   return (
     <Wrapper>
       <Header>
@@ -63,7 +91,11 @@ function App() {
       <div>
         <Dashboard height={'5rem'} />
       </div>
-      <ForecastTable timeTempData={mockDataHourly} />
+      <FeelsLike text="Feels like: 85°F - It's warmer due to the humidity." />
+      <ToggleButton type="button" onClick={handleClickToggle}>
+        <CornerDownLeft />
+      </ToggleButton>
+      <ForecastTable timeTempData={isHourly ? mockDataHourly : mockDataDaily} />
     </Wrapper>
   );
 }
