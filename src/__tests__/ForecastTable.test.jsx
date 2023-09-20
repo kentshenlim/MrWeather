@@ -1,6 +1,6 @@
 import { it, expect } from 'vitest';
 import { screen, render } from '@testing-library/react';
-import HourForecast from '../components/HourForecast';
+import ForecastTable from '../components/ForecastTable';
 
 const mockData = [
   ['1000', 23],
@@ -14,7 +14,7 @@ const mockData = [
 ];
 
 it('Rows and columns must be consistent with data passed as prop', () => {
-  render(<HourForecast timeTempData={mockData} />);
+  render(<ForecastTable timeTempData={mockData} />);
 
   const table = screen.getByRole('table').firstChild;
   expect(table.children.length).toBe(2);
@@ -23,7 +23,7 @@ it('Rows and columns must be consistent with data passed as prop', () => {
 });
 
 it('Data entry must be consistent with input prop', () => {
-  render(<HourForecast timeTempData={mockData} />);
+  render(<ForecastTable timeTempData={mockData} />);
 
   const table = screen.getByRole('table').firstChild;
   const timeArr = table.firstChild.children;

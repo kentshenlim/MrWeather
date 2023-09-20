@@ -2,7 +2,7 @@ import { styled } from 'styled-components';
 import Navbar from './components/Navbar';
 import AppTitle from './components/AppTitle';
 import Dashboard from './components/Dashboard';
-import HourForecast from './components/HourForecast';
+import ForecastTable from './components/ForecastTable';
 import color from './styles/color';
 import fontSize from './styles/fontSize';
 import './App.css';
@@ -62,7 +62,7 @@ function App() {
       <div>
         <Dashboard height={'5rem'} />
       </div>
-      <HourForecast timeTempData={mockData} />
+      <ForecastTable timeTempData={mockData} />
     </Wrapper>
   );
 }
