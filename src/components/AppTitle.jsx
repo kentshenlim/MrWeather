@@ -21,7 +21,7 @@ export default function AppTitle() {
     <Wrapper>
       <h1>MrWeather</h1>
       <a href="https://github.com/kentshenlim/MrWeather" target="_blank">
-        <img src={mrWeather} alt="MrWeather Icon" />
+        <img src={mrWeather} alt="MrWeather Icon" draggable={false} />
       </a>
     </Wrapper>
   );
