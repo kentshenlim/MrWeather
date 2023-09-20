@@ -1,3 +1,8 @@
+@font-face {
+  font-family: orbitron;
+  src: url('./assets/font/Orbitron/Orbitron-VariableFont_wght.ttf');
+}
+
 * {
   box-sizing: border-box;
 }

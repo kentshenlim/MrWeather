@@ -4,11 +4,12 @@ import fontSize from '../styles/fontSize';
 
 const Table = styled.table`
   width: 100%;
-  color: ${color.primary};
+  color: ${color.ternary};
   border-collapse: collapse;
   & tr:first-child {
     border-bottom: solid ${color.secondary} 2px;
     height: 4rem;
+    font-family: 'orbitron';
   }
   & th,
   & td {
