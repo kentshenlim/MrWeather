@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { it, expect } from 'vitest';
 import { screen, render } from '@testing-library/react';
 import HourForecast from '../components/HourForecast';
 
@@ -16,7 +16,7 @@ const mockData = [
 it('Rows and columns must be consistent with data passed as prop', () => {
   render(<HourForecast timeTempData={mockData} />);
 
-  const table = screen.getByRole('table');
+  const table = screen.getByRole('table').firstChild;
   expect(table.children.length).toBe(2);
   expect(table.firstChild.children.length).toBe(mockData.length);
   expect(table.lastChild.children.length).toBe(mockData.length);
@@ -25,11 +25,11 @@ it('Rows and columns must be consistent with data passed as prop', () => {
 it('Data entry must be consistent with input prop', () => {
   render(<HourForecast timeTempData={mockData} />);
 
-  const table = screen.getByRole('table');
+  const table = screen.getByRole('table').firstChild;
   const timeArr = table.firstChild.children;
   const tempArr = table.lastChild.children;
   for (let i = 0; i < timeArr.length; i += 1) {
     expect(timeArr[i].textContent).toBe(mockData[i][0]);
-    expect(tempArr[i].textContent).toBe(mockData[i][1]);
+    expect(tempArr[i].textContent).toBe(mockData[i][1] + '');
   }
 });
