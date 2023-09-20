@@ -4,6 +4,7 @@ import AppTitle from '../components/AppTitle';
 
 it('Title is MrWeather, icon image must be present', () => {
   render(<AppTitle />);
+
   expect(
     screen.getByRole('heading', { name: /mrweather/i })
   ).toBeInTheDocument();
@@ -14,6 +15,7 @@ it('Title is MrWeather, icon image must be present', () => {
 
 it('Img should be bounded by anchor tag, href is GitHub repo link', () => {
   render(<AppTitle />);
+
   const anchor = screen.getByRole('link', { name: /mrweather icon/i });
   expect(anchor).toBeInTheDocument();
   expect(anchor).toContainElement(
@@ -28,5 +30,6 @@ it('Img should be bounded by anchor tag, href is GitHub repo link', () => {
 
 it('Match snapshot', () => {
   const { container } = render(<AppTitle />);
+
   expect(container).toMatchSnapshot();
 });

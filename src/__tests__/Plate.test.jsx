@@ -7,6 +7,7 @@ describe('Props check', () => {
 
   it('value props', () => {
     render(<Plate value={testText} />);
+
     expect(screen.getByText(testText)).toBeInTheDocument();
   });
 
@@ -16,12 +17,14 @@ describe('Props check', () => {
       backgroundColor: 'rgb(0, 128, 128)',
     };
     render(<Plate value={testText} style={testStyle} />);
+
     expect(screen.getByText(testText).parentNode).toHaveStyle(testStyle);
   });
 
   it('children props', () => {
     const child = <div>Check presence</div>;
     render(<Plate value={testText}>{child}</Plate>);
+
     expect(screen.getByText(testText).parentNode).toContainElement(
       screen.getByText('Check presence')
     );

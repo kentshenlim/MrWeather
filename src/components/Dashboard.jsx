@@ -22,7 +22,7 @@ const Wrapper = styled.div`
 
 export default function Dashboard({ height }) {
   return (
-    <Wrapper>
+    <Wrapper data-testid="dashboard-wrapper">
       <Plate
         param={'Temperature'}
         value={'12%'}
