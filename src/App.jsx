@@ -9,6 +9,7 @@ import ForecastTable from './components/ForecastTable';
 import color from './styles/color';
 import fontSize from './styles/fontSize';
 import './App.css';
+import SunClock from './components/SunClock';
 
 const Wrapper = styled.div`
   width: 90%;
@@ -96,6 +97,7 @@ function App() {
         <CornerDownLeft />
       </ToggleButton>
       <ForecastTable timeTempData={isHourly ? mockDataHourly : mockDataDaily} />
+      <SunClock />
     </Wrapper>
   );
 }
