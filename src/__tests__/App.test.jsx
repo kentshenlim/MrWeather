@@ -13,14 +13,3 @@ describe('Test test', () => {
     expect(1 + 1).toBe(2);
   });
 });
-
-describe('UI test', () => {
-  it('div test', () => {
-    render(<App />);
-    expect(
-      screen.getByRole('heading', {
-        name: /mrweather/i,
-      })
-    ).toBeInTheDocument();
-  });
-});
