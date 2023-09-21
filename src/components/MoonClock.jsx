@@ -30,7 +30,7 @@ const Wrapper = styled.div`
   }
 `;
 
-export default function SunClock({ time }) {
+export default function MoonClock({ time }) {
   return (
     <Wrapper>
       <Clock value={time} renderSecondHand={false} renderMinuteMarks={false} />
@@ -38,6 +38,6 @@ export default function SunClock({ time }) {
   );
 }
 
-SunClock.propTypes = {
+MoonClock.propTypes = {
   time: PropTypes.instanceOf(Date),
 };

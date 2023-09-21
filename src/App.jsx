@@ -8,7 +8,6 @@ import FeelsLike from './components/FeelsLike';
 import ForecastTable from './components/ForecastTable';
 import color from './styles/color';
 import './App.css';
-import SunClock from './components/SunClock';
 import Model from './components/Model';
 
 const Wrapper = styled.div`
@@ -98,7 +97,6 @@ function App() {
         <CornerDownLeft />
       </ToggleButton>
       <ForecastTable timeTempData={isHourly ? mockDataHourly : mockDataDaily} />
-      <SunClock time={new Date()} />
       <Model />
     </Wrapper>
   );

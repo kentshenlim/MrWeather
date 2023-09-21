@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 import { useEffect, useRef } from 'react';
 import loadModel from '../utils/loadModel';
-import model from '../assets/model/fireInTheSky/scene.gltf';
+import model from '../assets/models/fireInTheSky/scene.gltf';
 
 const Wrapper = styled.div`
   position: absolute;
