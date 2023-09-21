@@ -13,8 +13,6 @@ Weather app with dynamic background based on weather.
 
 ## ToDo
 
-- TODO: set up Vitest and write test first
-- TODO: look for 3D background method
 - TODO: test include msw for fetching
 - TODO: toggle Fahrenheit or Celsius
 - TODO: location search, including init location and default location is not
@@ -22,9 +20,6 @@ Weather app with dynamic background based on weather.
 - TODO: humidity, feels like, wind, cloud
 - TODO: icon for the four, and the plate border style (opacity for wind) should
   based on the value
-- TODO: for bottom, show two things (switch on toggle). The first: 3 hour
-  interval from current hour, the weather; second: weather of the following days
-  (might need two different components then render conditionally based on state)
 - TODO: data processor, APP must received processed data only
 - TODO: github repo: click MrWeather's eyes or forehead
 - TODO: loading screen
