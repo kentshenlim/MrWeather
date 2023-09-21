@@ -17,7 +17,7 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-export default function Model2() {
+export default function Model() {
   const wrapperRef = useRef(null);
 
   useEffect(() => {

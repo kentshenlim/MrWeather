@@ -9,7 +9,7 @@ import ForecastTable from './components/ForecastTable';
 import color from './styles/color';
 import './App.css';
 import SunClock from './components/SunClock';
-import Model2 from './components/Model2';
+import Model from './components/Model';
 
 const Wrapper = styled.div`
   width: 90%;
@@ -99,7 +99,7 @@ function App() {
       </ToggleButton>
       <ForecastTable timeTempData={isHourly ? mockDataHourly : mockDataDaily} />
       <SunClock time={new Date()} />
-      <Model2 />
+      <Model />
     </Wrapper>
   );
 }
