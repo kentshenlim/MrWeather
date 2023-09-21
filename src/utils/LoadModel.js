@@ -65,6 +65,7 @@ export default function loadModel({ model, rendererWidth, rendererHeight, camera
         const height = container.clientHeight;
         renderer.setSize(width, height);
         camera.aspect = width / height;
+        camera.fov = width < 650 ? 65 : 55;
         camera.updateProjectionMatrix();
         }
     window.addEventListener('resize', handleResize);

@@ -5,7 +5,7 @@ import model from '../assets/model/fireInTheSky/scene.gltf';
 
 const Wrapper = styled.div`
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   width: 80%;
