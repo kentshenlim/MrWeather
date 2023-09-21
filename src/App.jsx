@@ -79,7 +79,6 @@ const mockDataDaily = [
 
 function App() {
   const [isHourly, setIsHourly] = useState(true);
-
   function handleClickToggle() {
     setIsHourly(!isHourly);
   }

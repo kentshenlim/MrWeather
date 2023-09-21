@@ -22,4 +22,4 @@ Weather app with dynamic background based on weather.
   based on the value
 - TODO: data processor, APP must received processed data only
 - TODO: github repo: click MrWeather's eyes or forehead
-- TODO: loading screen
+- TODO: loading screen, must wait for both 3D and api
