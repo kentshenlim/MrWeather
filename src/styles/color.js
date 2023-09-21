@@ -6,8 +6,8 @@ const color = {
   quaternary: '#E7D8D9',
   highlight: '#F5C5AB',
   highlightDim: '#E59272',
-  sunFace: '#FBD2AF',
-  sunShadow: '#F4B981',
+  moonFace: '#FBD2AF',
+  moonShadow: '#F4B981',
 };
 
 export default color;

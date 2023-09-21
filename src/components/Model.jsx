@@ -2,6 +2,7 @@ import { styled } from 'styled-components';
 import { useEffect, useRef } from 'react';
 import loadModel from '../utils/loadModel';
 import model from '../assets/models/fireInTheSky/scene.gltf';
+import MoonClock from './MoonClock';
 
 const Wrapper = styled.div`
   position: absolute;
@@ -35,5 +36,9 @@ export default function Model() {
     };
   }, []);
 
-  return <Wrapper id="container3D" ref={wrapperRef}></Wrapper>;
+  return (
+    <Wrapper id="container3D" ref={wrapperRef}>
+      <MoonClock time={new Date()} />
+    </Wrapper>
+  );
 }

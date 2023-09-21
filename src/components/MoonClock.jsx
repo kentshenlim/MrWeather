@@ -18,8 +18,8 @@ const Wrapper = styled.div`
     padding-top: 100%;
     & .react-clock__face {
       border: solid ${color.highlight} 10px;
-      box-shadow: 0px 0px 80px ${color.sunShadow};
-      background-color: ${color.sunFace};
+      box-shadow: 0px 0px 80px ${color.moonShadow};
+      background-color: ${color.moonFace};
     }
     & .react-clock__hand__body {
       background-color: ${color.highlightDim};
