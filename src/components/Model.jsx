@@ -28,7 +28,6 @@ export default function Model() {
       rendererHeight: window.innerHeight * 0.8,
       cameraPositionZ: 0,
     });
-    console.log(wrapperRef.current.offsetWidth);
     container.appendChild(model3D.domElement);
     return () => {
       container.removeChild(model3D.domElement);
