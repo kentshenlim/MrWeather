@@ -1,6 +1,7 @@
 import { styled } from 'styled-components';
 import PropTypes from 'prop-types';
 import color from '../styles/color';
+import fontSize from '../styles/fontSize';
 
 const Title = styled.h2`
   color: ${color.quaternary};
@@ -8,6 +9,7 @@ const Title = styled.h2`
   width: 70%;
   font-weight: normal;
   margin-top: 1rem;
+  font-size: ${fontSize.largest};
 `;
 
 export default function FeelsLike({ text }) {
