@@ -5,7 +5,7 @@ import color from '../styles/color';
 import fontSize from '../styles/fontSize';
 
 const Title = styled.h2`
-  color: ${color.quaternary};
+  color: ${color.accent};
   text-align: left;
   width: 70%;
   font-weight: normal;

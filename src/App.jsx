@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { CornerDownLeft } from 'react-feather';
 import { styled } from 'styled-components';
+import fetchDataWeather, { processData } from './utils/fetchDataWeather';
 
 import AppTitle from './components/AppTitle';
 import Dashboard from './components/Dashboard';
@@ -78,25 +79,44 @@ const mockDataDaily = [
 ];
 
 function App() {
+  const [location, setLocation] = useState('london');
+  const [isLoading, setIsLoading] = useState(null);
+  const [data, setData] = useState(null);
+  const [isTempC, setIsTempC] = useState(true);
   const [isHourly, setIsHourly] = useState(true);
+
+  useEffect(() => {
+    async function fetchAndProcess() {
+      const res = await fetchDataWeather(location);
+      setData(processData(res));
+    }
+    fetchAndProcess();
+  }, [location]);
+
   function handleClickToggle() {
     setIsHourly(!isHourly);
   }
+
+  if (!data) return 'Loading';
 
   return (
     <Wrapper>
       <Header>
         <Navbar
-          location="Kuala Lumpur"
-          dateStr="23 July 2023"
-          timeStr="12:51 pm"
+          location={data.location}
+          dateStr={data.date}
+          timeStr={data.time}
         />
         <AppTitle />
       </Header>
       <div>
         <Dashboard height={'5rem'} />
       </div>
-      <FeelsLike text="Feels like: 85°F - It's warmer due to the humidity." />
+      <FeelsLike
+        text={`Feels like: ${
+          isTempC ? data.feelsLikeObj.tempC : data.feelsLikeObj.tempF
+        } - ${data.feelsLikeObj.text}`}
+      />
       <ToggleButton type="button" onClick={handleClickToggle}>
         <CornerDownLeft />
       </ToggleButton>
