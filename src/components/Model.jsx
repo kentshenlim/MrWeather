@@ -4,16 +4,15 @@ import loadModel from '../utils/loadModel';
 import model from '../assets/model/fireInTheSky/scene.gltf';
 
 const Wrapper = styled.div`
-  border: solid red 3px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-  width: 50%;
-  height: 50%;
-  opacity: 0.4;
+  width: 80%;
+  height: 80%;
+  opacity: 0.6;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
 `;
 
@@ -24,10 +23,11 @@ export default function Model() {
     const container = wrapperRef.current;
     const model3D = loadModel({
       model: model,
-      rendererWidth: window.innerWidth / 3,
-      rendererHeight: window.innerHeight / 3,
-      cameraPositionZ: 1.5,
+      rendererWidth: window.innerWidth * 0.8,
+      rendererHeight: window.innerHeight * 0.8,
+      cameraPositionZ: 0,
     });
+    console.log(wrapperRef.current.offsetWidth);
     container.appendChild(model3D.domElement);
     return () => {
       container.removeChild(model3D.domElement);

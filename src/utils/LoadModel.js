@@ -39,6 +39,9 @@ export default function loadModel({ model, rendererWidth, rendererHeight, camera
 
     // Camera and light
     camera.position.z = cameraPositionZ;
+    camera.position.y += 1;
+    camera.position.x += 3;
+    camera.fov = 55; // Zoom in
     const topLight = new THREE.DirectionalLight(0xffffff, 1); // (color, intensity)
     topLight.position.set(500, 500, 500); // top-left-ish
     topLight.castShadow = true;
@@ -57,11 +60,15 @@ export default function loadModel({ model, rendererWidth, rendererHeight, camera
 
     // Camera and window responsive
     function handleResize() {
-        camera.aspect = window.innerWidth / window.innerHeight;
+        const container = document.getElementById('container3D');
+        const width = container.clientWidth;
+        const height = container.clientHeight;
+        renderer.setSize(width, height);
+        camera.aspect = width / height;
         camera.updateProjectionMatrix();
-        renderer.setSize(rendererHeight, rendererWidth);
-    }
+        }
     window.addEventListener('resize', handleResize);
+    handleResize(); // First run
 
     // Cleanup function for React effect
     function cleanUp() {

@@ -13,7 +13,3 @@
     rgba(191, 209, 219, 1) 100%
   );
 }
-
-#container3D > * {
-  border: solid blue 3px;
-}
