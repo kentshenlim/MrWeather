@@ -19,6 +19,7 @@
     "react-feather": "^2.0.10",
     "save-dev": "^0.0.1-security",
     "styled-components": "^6.0.7",
+    "three": "^0.156.1",
     "vitest": "^0.34.3"
   },
   "devDependencies": {
