@@ -19,7 +19,6 @@ Weather app with dynamic background based on weather.
 - TODO: toggle Fahrenheit or Celsius
 - TODO: location search, including init location and default location is not
   allowed, including auto complete
-- TODO: show clock
 - TODO: humidity, feels like, wind, cloud
 - TODO: icon for the four, and the plate border style (opacity for wind) should
   based on the value
