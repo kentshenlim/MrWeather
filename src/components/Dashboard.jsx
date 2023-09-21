@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { Cloud, Droplet, Thermometer, Wind } from 'react-feather';
 import { styled } from 'styled-components';
+import { useState } from 'react';
 
 import color from '../styles/color';
 import Plate from './Plate';
@@ -21,13 +22,14 @@ const Wrapper = styled.div`
   padding-bottom: 0.5rem;
 `;
 
-export default function Dashboard({ height }) {
+export default function Dashboard({ height, dataObj, isTempC, setIsTempC }) {
   return (
     <Wrapper data-testid="dashboard-wrapper">
       <Plate
         param={'Temperature'}
-        value={'12%'}
+        value={isTempC ? dataObj.tempC + '℃' : dataObj.tempF + 'F'}
         style={{ height: height, border: `solid ${color.secondary} 3px` }}
+        handleClick={() => setIsTempC(!isTempC)}
       >
         <Thermometer />
       </Plate>
@@ -71,4 +73,14 @@ export default function Dashboard({ height }) {
 
 Dashboard.propTypes = {
   height: PropTypes.string.isRequired,
+  dataObj: PropTypes.exact({
+    tempC: PropTypes.number,
+    tempF: PropTypes.number,
+    humidity: PropTypes.number,
+    windKPH: PropTypes.number,
+    windMPH: PropTypes.number,
+    cloud: PropTypes.number,
+  }).isRequired,
+  isTempC: PropTypes.bool.isRequired,
+  setIsTempC: PropTypes.func.isRequired,
 };

@@ -26,9 +26,9 @@ const Wrapper = styled.div`
   }
 `;
 
-export default function Plate({ value, style, children }) {
+export default function Plate({ value, style, children, handleClick }) {
   return (
-    <Wrapper style={style}>
+    <Wrapper style={style} onClick={handleClick}>
       {children}
       <p>{value}</p>
     </Wrapper>
@@ -36,7 +36,8 @@ export default function Plate({ value, style, children }) {
 }
 
 Plate.propTypes = {
-  value: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   style: PropTypes.object.isRequired,
   children: PropTypes.node.isRequired,
+  handleClick: PropTypes.func,
 };

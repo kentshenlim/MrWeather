@@ -110,11 +110,18 @@ function App() {
         <AppTitle />
       </Header>
       <div>
-        <Dashboard height={'5rem'} />
+        <Dashboard
+          height={'5rem'}
+          dataObj={data.dashboardObj}
+          isTempC={isTempC}
+          setIsTempC={setIsTempC}
+        />
       </div>
       <FeelsLike
         text={`Feels like: ${
-          isTempC ? data.feelsLikeObj.tempC : data.feelsLikeObj.tempF
+          isTempC
+            ? data.feelsLikeObj.tempC + ' ℃'
+            : data.feelsLikeObj.tempF + ' F'
         } - ${data.feelsLikeObj.text}`}
       />
       <ToggleButton type="button" onClick={handleClickToggle}>
