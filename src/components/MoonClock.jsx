@@ -6,12 +6,12 @@ import color from '../styles/color';
 
 const Wrapper = styled.div`
   /* See https://github.com/wojtekmaj/react-clock/issues/22 for react-clock with dynamic size */
-  width: max(10vw, 100px);
-  height: max(10vw, 100px);
+  width: max(10vw, 60px);
+  height: max(10vw, 60px);
   position: absolute;
-  top: 50%;
+  top: 0%;
   right: 2%;
-  transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%);
   > .react-clock {
     width: inherit !important;
     height: inherit !important;
