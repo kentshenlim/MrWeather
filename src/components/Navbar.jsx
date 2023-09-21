@@ -1,8 +1,9 @@
-import { styled } from 'styled-components';
 import PropTypes from 'prop-types';
-import SearchBar from './SearchBar';
+import { styled } from 'styled-components';
+
 import color from '../styles/color';
 import fontSize from '../styles/fontSize';
+import SearchBar from './SearchBar';
 
 const Wrapper = styled.nav`
   display: flex;

@@ -1,7 +1,8 @@
-import { styled } from 'styled-components';
 import { useEffect, useRef } from 'react';
-import loadModel from '../utils/loadModel';
+import { styled } from 'styled-components';
+
 import model from '../assets/models/fireInTheSky/scene.gltf';
+import loadModel from '../utils/loadModel';
 import MoonClock from './MoonClock';
 
 const Wrapper = styled.div`

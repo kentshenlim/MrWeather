@@ -1,8 +1,10 @@
-import { styled } from 'styled-components';
-import Clock from 'react-clock';
 import PropTypes from 'prop-types';
-import 'react-clock/dist/Clock.css';
+import Clock from 'react-clock';
+import { styled } from 'styled-components';
+
 import color from '../styles/color';
+
+import 'react-clock/dist/Clock.css';
 
 const Wrapper = styled.div`
   /* See https://github.com/wojtekmaj/react-clock/issues/22 for react-clock with dynamic size */

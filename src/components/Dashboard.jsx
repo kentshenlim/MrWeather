@@ -1,8 +1,9 @@
-import { styled } from 'styled-components';
 import PropTypes from 'prop-types';
-import { Thermometer, Droplet, Wind, Cloud } from 'react-feather';
-import Plate from './Plate';
+import { Cloud, Droplet, Thermometer, Wind } from 'react-feather';
+import { styled } from 'styled-components';
+
 import color from '../styles/color';
+import Plate from './Plate';
 
 const Wrapper = styled.div`
   display: flex;

@@ -1,14 +1,16 @@
-import { styled } from 'styled-components';
 import { useState } from 'react';
 import { CornerDownLeft } from 'react-feather';
-import Navbar from './components/Navbar';
+import { styled } from 'styled-components';
+
 import AppTitle from './components/AppTitle';
 import Dashboard from './components/Dashboard';
 import FeelsLike from './components/FeelsLike';
 import ForecastTable from './components/ForecastTable';
-import color from './styles/color';
-import './App.css';
 import Model from './components/Model';
+import Navbar from './components/Navbar';
+import color from './styles/color';
+
+import './App.css';
 
 const Wrapper = styled.div`
   width: 90%;
@@ -100,7 +102,7 @@ function App() {
         <CornerDownLeft />
       </ToggleButton>
       <ForecastTable timeTempData={isHourly ? mockDataHourly : mockDataDaily} />
-      <Model />
+      {/* <Model /> */}
     </Wrapper>
   );
 }

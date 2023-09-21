@@ -1,7 +1,8 @@
-import { styled } from 'styled-components';
 import PropTypes from 'prop-types';
-import fontSize from '../styles/fontSize';
+import { styled } from 'styled-components';
+
 import color from '../styles/color';
+import fontSize from '../styles/fontSize';
 
 const Wrapper = styled.div`
   display: flex;

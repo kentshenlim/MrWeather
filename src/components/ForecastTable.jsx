@@ -1,5 +1,6 @@
-import { styled } from 'styled-components';
 import { useState } from 'react';
+import { styled } from 'styled-components';
+
 import color from '../styles/color';
 import fontSize from '../styles/fontSize';
 
@@ -47,7 +48,7 @@ export default function ForecastTable({ timeTempData }) {
     setActiveIdx(idx);
   }
 
-  function handleMouseOut(idx) {
+  function handleMouseOut() {
     setActiveIdx(-1);
   }
 
@@ -66,7 +67,7 @@ export default function ForecastTable({ timeTempData }) {
           handleMouseOver(idx);
         }}
         onMouseOut={() => {
-          handleMouseOut(idx);
+          handleMouseOut();
         }}
         style={getDynamicStyle(idx)}
       >
@@ -83,7 +84,7 @@ export default function ForecastTable({ timeTempData }) {
           handleMouseOver(idx);
         }}
         onMouseOut={() => {
-          handleMouseOut(idx);
+          handleMouseOut();
         }}
         style={getDynamicStyle(idx)}
       >
@@ -102,7 +103,7 @@ export default function ForecastTable({ timeTempData }) {
   );
 }
 
-function isGoodArray(props, propName, componentName) {
+function isGoodArray(props, propName) {
   const timeTempData = props[propName];
   for (const item of timeTempData) {
     if (item.length !== 2)

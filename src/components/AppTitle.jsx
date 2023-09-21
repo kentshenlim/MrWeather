@@ -1,4 +1,5 @@
 import { styled } from 'styled-components';
+
 import mrWeather from '../assets/img/mrWeather.png';
 import fontSize from '../styles/fontSize';
 
@@ -20,7 +21,11 @@ export default function AppTitle() {
   return (
     <Wrapper>
       <h1>MrWeather</h1>
-      <a href="https://github.com/kentshenlim/MrWeather" target="_blank">
+      <a
+        href="https://github.com/kentshenlim/MrWeather"
+        target="_blank"
+        rel="noreferrer"
+      >
         <img src={mrWeather} alt="MrWeather Icon" draggable={false} />
       </a>
     </Wrapper>

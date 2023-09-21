@@ -1,5 +1,6 @@
-import { styled } from 'styled-components';
 import { Search } from 'react-feather';
+import { styled } from 'styled-components';
+
 import color from '../styles/color';
 import fontSize from '../styles/fontSize';
 
