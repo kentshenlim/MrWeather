@@ -49,6 +49,26 @@ function processData(goodRes, {hourGap = 1}) {
         currentHour += hourGap; // Hour gap
     }
 
+    // Process the time display
+    for (let i = 0; i < hourlyForecastArrFinal.length; i++) {
+        if (i === 0) {
+            const hour = hourlyForecastArrFinal[0][0];
+            if (hour < 12) {
+                if (hour === 0) hourlyForecastArrFinal[0][0] = 12;
+                hourlyForecastArrFinal[0][0] += "AM";
+            }
+            else {
+                if (hour > 12) hourlyForecastArrFinal[0][0] -= 12;
+                hourlyForecastArrFinal[0][0] += "PM";
+            }
+            continue;
+        }
+        const hour = hourlyForecastArrFinal[i][0];
+        if (hour === 0) hourlyForecastArrFinal[i][0] = "12AM";
+        else if (hour === 12) hourlyForecastArrFinal[i][0] += "PM";
+        else if (hour > 12) hourlyForecastArrFinal[i][0] -= 12; 
+    }
+
     return {
         location: locationFinal,
         date: dateFinal,
