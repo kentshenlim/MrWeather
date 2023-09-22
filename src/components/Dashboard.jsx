@@ -89,8 +89,9 @@ export default function Dashboard({ height, dataObj, isTempC, setIsTempC }) {
         value={dataObj.cloud + '%'}
         style={{
           height: height,
-          backgroundColor: `${color.quaternary}`,
-          opacity: `${1 - (0.5 / 100) * dataObj.cloud}`,
+          backgroundColor: `rgba(231, 216, 217, ${
+            1 - (0.5 / 100) * dataObj.cloud
+          })`,
         }}
         handleClick={() => {
           cloudAudRef.current.currentTime = 0;

@@ -35,7 +35,7 @@ const Wrapper = styled.div`
     padding: 0 1rem;
   }
   > *:not(#container3D) {
-    z-index: 1;
+    /* z-index: 1; */
   }
 `;
 

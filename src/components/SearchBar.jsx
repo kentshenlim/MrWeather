@@ -3,12 +3,16 @@ import { styled } from 'styled-components';
 
 import color from '../styles/color';
 import fontSize from '../styles/fontSize';
+import { useState, useEffect } from 'react';
+import fetchLocation from '../utils/fetchLocation';
+
+const borderRadius = '2rem';
 
 const Wrapper = styled.div`
   display: flex;
   min-width: 3rem;
-  overflow: hidden;
-  border-radius: 2rem;
+  position: relative;
+  border-radius: ${borderRadius};
   &:has(> input:focus) {
     border: solid ${color.accent} 2px;
   }
@@ -21,6 +25,8 @@ const Input = styled.input`
   font-size: ${fontSize.small};
   border: transparent;
   background-color: ${color.ternary};
+  border-top-left-radius: ${borderRadius};
+  border-bottom-left-radius: ${borderRadius};
   &:focus {
     outline: none;
   }
@@ -33,6 +39,8 @@ const Button = styled.button`
   background-color: ${color.secondary};
   display: flex;
   align-items: center;
+  border-top-right-radius: ${borderRadius};
+  border-bottom-right-radius: ${borderRadius};
   @media only screen and (max-width: 1100px) {
     padding: 0.6rem;
   }
@@ -44,13 +52,56 @@ const Button = styled.button`
   }
 `;
 
+const Suggest = styled.div`
+  position: absolute;
+  width: 100%;
+  border: solid red 3px;
+  top: 100%;
+  background-color: green;
+  > div {
+    /* background-color: blue; */
+    text-align: left;
+    padding-left: 1rem;
+  }
+`;
+
 export default function SearchBar() {
+  const [searchText, setSearchText] = useState('');
+  const [optList, setOptList] = useState([]);
+
+  function handleChange(e) {
+    setSearchText(e.target.value);
+  }
+
+  useEffect(() => {
+    async function updateOptList(text) {
+      const locationsFull = await fetchLocation(text);
+      console.log(locationsFull);
+      const locations = locationsFull.map((obj) => ({
+        name: obj.name,
+        id: obj.id,
+      }));
+      console.log(locations);
+      setOptList(locations);
+    }
+    if (searchText.length > 2) updateOptList(searchText);
+  }, [searchText]);
+
+  const autoCompleteJSXArr = optList.map((loc) => (
+    <div key={loc.id}>{loc.name}</div>
+  ));
+
   return (
     <Wrapper>
-      <Input placeholder="Search City..."></Input>
+      <Input
+        placeholder="Search City..."
+        value={searchText}
+        onChange={handleChange}
+      ></Input>
       <Button>
         <Search color={color.quaternary} />
       </Button>
+      <Suggest>{autoCompleteJSXArr}</Suggest>
     </Wrapper>
   );
 }
