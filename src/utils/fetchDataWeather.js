@@ -9,7 +9,7 @@ async function fetchDataWeather(validLocation) {
     return goodRes;
 }
 
-function processData(goodRes, {hourGap = 1, hourDataCount = 8}) {
+function processData(goodRes, {hourGap = 1, hourDataCount = 8, dayCount = 3}) {
     // Trim away data not of interest
     console.log(goodRes);
     const locationFinal = goodRes.location.name;
@@ -70,6 +70,11 @@ function processData(goodRes, {hourGap = 1, hourDataCount = 8}) {
     }
 
     const dailyForecastArrFinal = [];
+    for (let i = 0; i < Math.min(dayCount, forecastDay.length); i++) {
+        const dateObj = new Date(forecastDay[i].date);
+        const day = format(dateObj, 'EEE').toUpperCase();
+        dailyForecastArrFinal.push([day, forecastDay[i].day.condition.icon]);
+    }
 
 
     return {
@@ -78,7 +83,8 @@ function processData(goodRes, {hourGap = 1, hourDataCount = 8}) {
         time: timeFinal,
         feelsLikeObj: feelsLikeObjFinal,
         dashboardObj: dashboardObjFinal,
-        hourlyForecastArr: hourlyForecastArrFinal
+        hourlyForecastArr: hourlyForecastArrFinal,
+        dailyForecastArr: dailyForecastArrFinal
     };
 }
 

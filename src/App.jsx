@@ -83,12 +83,12 @@ function App() {
   const [isLoading, setIsLoading] = useState(null);
   const [data, setData] = useState(null);
   const [isTempC, setIsTempC] = useState(true);
-  const [isHourly, setIsHourly] = useState(true);
+  const [isHourly, setIsHourly] = useState(false);
 
   useEffect(() => {
     async function fetchAndProcess() {
       const res = await fetchDataWeather(location);
-      setData(processData(res, { hourGap: 1, hourDataCount: 10 }));
+      setData(processData(res, { hourGap: 1 }));
     }
     fetchAndProcess();
   }, [location]);
@@ -129,7 +129,7 @@ function App() {
         <CornerDownLeft />
       </ToggleButton>
       <ForecastTable
-        timeTempData={isHourly ? data.hourlyForecastArr : mockDataDaily}
+        timeTempData={isHourly ? data.hourlyForecastArr : data.dailyForecastArr}
       />
       {/* <Model /> */}
     </Wrapper>
