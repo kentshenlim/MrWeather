@@ -3,7 +3,13 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'; // Allow interaction
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'; // Load gltf file (3D model)
 
-export default function loadModel({ model, rendererWidth, rendererHeight, cameraPositionZ }) { // Init
+export default function loadModel({
+  model,
+  rendererWidth,
+  rendererHeight,
+  cameraPositionZ,
+  callbackWhenDoneLoading
+}) { // Init
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
       100,
@@ -13,7 +19,9 @@ export default function loadModel({ model, rendererWidth, rendererHeight, camera
     );
     let object; // 3D object
     let controls; // OrbitControls
-    const loader = new GLTFLoader(); // Loader for gltf
+    const manager = new THREE.LoadingManager(() => { callbackWhenDoneLoading() });
+    const loader = new GLTFLoader(manager); // Loader for gltf
+
 
     // Load the file
     loader.load(

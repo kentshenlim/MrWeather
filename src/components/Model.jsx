@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 import { styled } from 'styled-components';
 
 import model from '../assets/models/fireInTheSky/scene.gltf';
@@ -18,7 +19,7 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-export default function Model() {
+export default function Model({ setIsLoadingModel }) {
   const wrapperRef = useRef(null);
 
   useEffect(() => {
@@ -28,6 +29,10 @@ export default function Model() {
       rendererWidth: window.innerWidth * 0.8,
       rendererHeight: window.innerHeight * 0.8,
       cameraPositionZ: 0,
+      callbackWhenDoneLoading: () => {
+        setIsLoadingModel(false);
+        console.log('s');
+      },
     });
     container.appendChild(model3D.domElement);
     return () => {
@@ -42,3 +47,7 @@ export default function Model() {
     </Wrapper>
   );
 }
+
+Model.propTypes = {
+  setIsLoadingModel: PropTypes.func.isRequired,
+};

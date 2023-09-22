@@ -11,7 +11,6 @@ async function fetchDataWeather(validLocation) {
 
 function processData(goodRes, {hourGap = 1, hourDataCount = 8, dayCount = 3}) {
     // Trim away data not of interest
-    console.log(goodRes);
     const locationFinal = goodRes.location.name;
 
     const dateObj = new Date(goodRes.location.localtime);

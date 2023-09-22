@@ -1,6 +1,7 @@
 import { styled } from 'styled-components';
 import mrWeather from '../assets/img/mrWeather.png';
 import fontSize from '../styles/fontSize';
+import PropTypes from 'prop-types';
 
 const Wrapper = styled.div`
   margin-top: auto;
@@ -49,12 +50,12 @@ const Wrapper = styled.div`
   }
 `;
 
-export default function Loading() {
+export default function Loading({ text }) {
   return (
     <Wrapper>
       <img src={mrWeather} alt="Mr Weather icon" />
       <div>
-        <span>Fetching weather data </span>
+        <span> {text} </span>
         <div>
           <span>•</span>
           <span>•</span>
@@ -64,3 +65,11 @@ export default function Loading() {
     </Wrapper>
   );
 }
+
+Loading.propTypes = {
+  text: PropTypes.string,
+};
+
+Loading.defaultProps = {
+  text: 'Loading ',
+};

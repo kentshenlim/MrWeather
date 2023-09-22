@@ -59,33 +59,36 @@ const ToggleButton = styled.button`
 `;
 
 function App() {
-  const [location, setLocation] = useState('kulim');
-  const [isLoading, setIsLoading] = useState(null);
+  const [location, setLocation] = useState('selangor');
+  const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingModel, setIsLoadingModel] = useState(true);
   const [data, setData] = useState(null);
   const [isTempC, setIsTempC] = useState(true);
   const [isHourly, setIsHourly] = useState(true);
 
-  // useEffect(() => {
-  //   async function fetchAndProcess() {
-  //     const res = await fetchDataWeather(location);
-  //     setData(processData(res, { hourGap: 1 }));
-  //   }
-  //   fetchAndProcess();
-  // }, [location]);
+  useEffect(() => {
+    async function fetchAndProcess() {
+      const res = await fetchDataWeather(location);
+      setData(processData(res, { hourGap: 1 }));
+    }
+    fetchAndProcess();
+  }, [location]);
 
   function handleClickToggle() {
     setIsHourly(!isHourly);
   }
 
-  if (!data)
+  if (!data || isLoadingModel)
     return (
       <Wrapper>
-        <Loading />
+        <Model setIsLoadingModel={setIsLoadingModel} />
+        <Loading text={!data ? 'Fetching weather data ' : 'Loading model '} />
       </Wrapper>
     );
 
   return (
     <Wrapper>
+      <Model setIsLoadingModel={setIsLoadingModel} />
       <Header>
         <Navbar
           location={data.location}
@@ -116,7 +119,6 @@ function App() {
       <ForecastTable
         timeTempData={isHourly ? data.hourlyForecastArr : data.dailyForecastArr}
       />
-      {/* <Model /> */}
     </Wrapper>
   );
 }
