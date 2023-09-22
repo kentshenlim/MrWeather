@@ -79,11 +79,11 @@ const mockDataDaily = [
 ];
 
 function App() {
-  const [location, setLocation] = useState('kuala lumpur');
+  const [location, setLocation] = useState('london');
   const [isLoading, setIsLoading] = useState(null);
   const [data, setData] = useState(null);
   const [isTempC, setIsTempC] = useState(true);
-  const [isHourly, setIsHourly] = useState(false);
+  const [isHourly, setIsHourly] = useState(true);
 
   useEffect(() => {
     async function fetchAndProcess() {

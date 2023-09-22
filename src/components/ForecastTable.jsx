@@ -104,7 +104,7 @@ export default function ForecastTable({ timeTempData }) {
         style={getDynamicStyle(idx)}
       >
         {typeof arr[1] == 'string' && arr[1].startsWith('//') ? (
-          <img src={arr[1]} alt="Weather icon"></img>
+          <img src={arr[1]} alt="Weather icon" title={arr[2]}></img>
         ) : (
           arr[1]
         )}
@@ -125,8 +125,10 @@ export default function ForecastTable({ timeTempData }) {
 function isGoodArray(props, propName) {
   const timeTempData = props[propName];
   for (const item of timeTempData) {
-    if (item.length !== 2)
-      throw new Error(`Invalid prop ${propName}. Expected array of length 2`);
+    if (item.length < 2)
+      throw new Error(
+        `Invalid prop ${propName}. Expected array of length at least 2`
+      );
     for (const entry of item) {
       if ((typeof entry !== 'number') & (typeof entry !== 'string'))
         throw new Error(

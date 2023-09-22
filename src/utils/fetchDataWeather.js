@@ -45,7 +45,7 @@ function processData(goodRes, {hourGap = 1, hourDataCount = 8, dayCount = 3}) {
             currentDay += 1;
         }
         const data = forecastDay[currentDay].hour[currentHour];
-        hourlyForecastArrFinal.push([currentHour, data.condition.icon]);
+        hourlyForecastArrFinal.push([currentHour, data.condition.icon, data.condition.text]);
         currentHour += hourGap; // Hour gap
     }
 
@@ -73,7 +73,11 @@ function processData(goodRes, {hourGap = 1, hourDataCount = 8, dayCount = 3}) {
     for (let i = 0; i < Math.min(dayCount, forecastDay.length); i++) {
         const dateObj = new Date(forecastDay[i].date);
         const day = format(dateObj, 'EEE').toUpperCase();
-        dailyForecastArrFinal.push([day, forecastDay[i].day.condition.icon]);
+        dailyForecastArrFinal.push([
+            day,
+            forecastDay[i].day.condition.icon,
+            forecastDay[i].day.condition.text
+        ]);
     }
 
 
