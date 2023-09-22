@@ -9,7 +9,7 @@ async function fetchDataWeather(validLocation) {
     return goodRes;
 }
 
-function processData(goodRes, {hourGap = 1}) {
+function processData(goodRes, {hourGap = 1, hourDataCount = 8}) {
     // Trim away data not of interest
     console.log(goodRes);
     const locationFinal = goodRes.location.name;
@@ -39,7 +39,7 @@ function processData(goodRes, {hourGap = 1}) {
     let currentHour = dateObj.getHours() + 1; // Next hour, numerically equal to index in data array
     let currentDay = 0; // Idx of day
     const hourlyForecastArrFinal = [];
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < hourDataCount; i++) {
         if (currentHour >= 24) {
             currentHour -= 24;
             currentDay += 1;
@@ -68,6 +68,9 @@ function processData(goodRes, {hourGap = 1}) {
         else if (hour === 12) hourlyForecastArrFinal[i][0] += "PM";
         else if (hour > 12) hourlyForecastArrFinal[i][0] -= 12; 
     }
+
+    const dailyForecastArrFinal = [];
+
 
     return {
         location: locationFinal,

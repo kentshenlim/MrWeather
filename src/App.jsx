@@ -79,7 +79,7 @@ const mockDataDaily = [
 ];
 
 function App() {
-  const [location, setLocation] = useState('india');
+  const [location, setLocation] = useState('kuala lumpur');
   const [isLoading, setIsLoading] = useState(null);
   const [data, setData] = useState(null);
   const [isTempC, setIsTempC] = useState(true);
@@ -88,7 +88,7 @@ function App() {
   useEffect(() => {
     async function fetchAndProcess() {
       const res = await fetchDataWeather(location);
-      setData(processData(res, { hourGap: 1 }));
+      setData(processData(res, { hourGap: 1, hourDataCount: 10 }));
     }
     fetchAndProcess();
   }, [location]);
@@ -128,7 +128,9 @@ function App() {
       <ToggleButton type="button" onClick={handleClickToggle}>
         <CornerDownLeft />
       </ToggleButton>
-      <ForecastTable timeTempData={data.hourlyForecastArr} />
+      <ForecastTable
+        timeTempData={isHourly ? data.hourlyForecastArr : mockDataDaily}
+      />
       {/* <Model /> */}
     </Wrapper>
   );

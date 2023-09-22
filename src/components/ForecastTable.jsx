@@ -15,6 +15,7 @@ const Table = styled.table`
   > tbody {
     width: 100%;
     overflow-x: auto;
+    display: table;
   }
   & tr:first-child {
     border-bottom: solid ${color.secondary} 2px;
@@ -102,7 +103,7 @@ export default function ForecastTable({ timeTempData }) {
         }}
         style={getDynamicStyle(idx)}
       >
-        {arr[1].startsWith('//') ? (
+        {typeof arr[1] == 'string' && arr[1].startsWith('//') ? (
           <img src={arr[1]} alt="Weather icon"></img>
         ) : (
           arr[1]
