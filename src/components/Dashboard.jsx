@@ -1,8 +1,11 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Cloud, Droplet, Thermometer, Wind } from 'react-feather';
 import { styled } from 'styled-components';
 
+import cloudAud from '../assets/audio/cloud.wav';
+import waterAud1 from '../assets/audio/water1.wav';
+import waterAud2 from '../assets/audio/water2.wav';
 import color from '../styles/color';
 import Plate from './Plate';
 
@@ -24,6 +27,8 @@ const Wrapper = styled.div`
 
 export default function Dashboard({ height, dataObj, isTempC, setIsTempC }) {
   const [isWindK, setIsWindK] = useState(true);
+  const waterAudRef = useRef(null);
+  const cloudAudRef = useRef(null);
 
   return (
     <Wrapper data-testid="dashboard-wrapper">
@@ -53,8 +58,18 @@ export default function Dashboard({ height, dataObj, isTempC, setIsTempC }) {
           border: `double ${color.secondary} 4px`,
           boxShadow: `0px 0px 6px ${color.ternary}`,
         }}
+        handleClick={() => {
+          waterAudRef.current.currentTime = 0;
+          waterAudRef.current.play();
+        }}
       >
         <Droplet />
+        {
+          <audio
+            src={dataObj.humidity < 50 ? waterAud1 : waterAud2}
+            ref={waterAudRef}
+          ></audio>
+        }
       </Plate>
       <Plate
         param={'Wind'}
@@ -77,8 +92,13 @@ export default function Dashboard({ height, dataObj, isTempC, setIsTempC }) {
           backgroundColor: `${color.quaternary}`,
           opacity: `${1 - (0.5 / 100) * dataObj.cloud}`,
         }}
+        handleClick={() => {
+          cloudAudRef.current.currentTime = 0;
+          cloudAudRef.current.play();
+        }}
       >
         <Cloud />
+        <audio src={cloudAud} ref={cloudAudRef}></audio>
       </Plate>
     </Wrapper>
   );

@@ -79,7 +79,7 @@ const mockDataDaily = [
 ];
 
 function App() {
-  const [location, setLocation] = useState('uk');
+  const [location, setLocation] = useState('london');
   const [isLoading, setIsLoading] = useState(null);
   const [data, setData] = useState(null);
   const [isTempC, setIsTempC] = useState(true);
