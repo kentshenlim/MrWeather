@@ -16,7 +16,5 @@ Weather app with dynamic background based on weather.
 - TODO: test include msw for fetching
 - TODO: location search, including init location and default location is not
   allowed, including auto complete
-- TODO: data processor, APP must received processed data only
 - TODO: github repo: click MrWeather's eyes or forehead
-- TODO: loading screen, must wait for both 3D and api
 - TODO: refresh button
