@@ -10,15 +10,29 @@ const Table = styled.table`
   width: 100%;
   color: ${color.ternary};
   border-collapse: collapse;
+  overflow-x: auto;
+  display: flex;
+  > tbody {
+    width: 100%;
+    overflow-x: auto;
+  }
   & tr:first-child {
     border-bottom: solid ${color.secondary} 2px;
     height: 4rem;
     font-family: 'orbitron';
   }
+  & tr {
+    display: flex;
+  }
   & th,
   & td {
     padding: 0.5rem;
     cursor: pointer;
+    flex: 1 1 0;
+    min-width: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   & th:not(:first-child),
   & td:not(:first-child) {
@@ -88,7 +102,11 @@ export default function ForecastTable({ timeTempData }) {
         }}
         style={getDynamicStyle(idx)}
       >
-        {arr[1]}
+        {arr[1].startsWith('//') ? (
+          <img src={arr[1]} alt="Weather icon"></img>
+        ) : (
+          arr[1]
+        )}
       </td>
     );
   });

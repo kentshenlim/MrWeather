@@ -9,7 +9,7 @@ async function fetchDataWeather(validLocation) {
     return goodRes;
 }
 
-function processData(goodRes) {
+function processData(goodRes, {hourGap = 1}) {
     // Trim away data not of interest
     console.log(goodRes);
     const locationFinal = goodRes.location.name;
@@ -24,7 +24,7 @@ function processData(goodRes) {
         tempF: Math.round(current.feelslike_f),
         text: current.condition.text,
         iconURL: current.condition.icon,
-    }
+    };
 
     const dashboardObjFinal = {
         tempC: current.temp_c,
@@ -33,17 +33,29 @@ function processData(goodRes) {
         windKPH: current.wind_kph,
         windMPH: current.wind_mph,
         cloud: current.cloud,
+    };
+
+    const forecastDay = goodRes.forecast.forecastday; // Array of 3 days
+    let currentHour = dateObj.getHours() + 1; // Next hour, numerically equal to index in data array
+    let currentDay = 0; // Idx of day
+    const hourlyForecastArrFinal = [];
+    for (let i = 0; i < 8; i++) {
+        if (currentHour >= 24) {
+            currentHour -= 24;
+            currentDay += 1;
+        }
+        const data = forecastDay[currentDay].hour[currentHour];
+        hourlyForecastArrFinal.push([currentHour, data.condition.icon]);
+        currentHour += hourGap; // Hour gap
     }
-    
 
-
-    console.log({locationFinal, dateFinal, timeFinal})
     return {
         location: locationFinal,
         date: dateFinal,
         time: timeFinal,
         feelsLikeObj: feelsLikeObjFinal,
-        dashboardObj: dashboardObjFinal
+        dashboardObj: dashboardObjFinal,
+        hourlyForecastArr: hourlyForecastArrFinal
     };
 }
 

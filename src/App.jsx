@@ -88,7 +88,7 @@ function App() {
   useEffect(() => {
     async function fetchAndProcess() {
       const res = await fetchDataWeather(location);
-      setData(processData(res));
+      setData(processData(res, { hourGap: 1 }));
     }
     fetchAndProcess();
   }, [location]);
@@ -128,7 +128,7 @@ function App() {
       <ToggleButton type="button" onClick={handleClickToggle}>
         <CornerDownLeft />
       </ToggleButton>
-      <ForecastTable timeTempData={isHourly ? mockDataHourly : mockDataDaily} />
+      <ForecastTable timeTempData={data.hourlyForecastArr} />
       {/* <Model /> */}
     </Wrapper>
   );
