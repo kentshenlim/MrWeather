@@ -13,7 +13,7 @@ const Wrapper = styled.div`
 `;
 
 const Title = styled.span`
-  color: ${color.accent};
+  color: ${color.quaternary};
   text-align: left;
   font-weight: normal;
   font-size: ${fontSize.largest};
