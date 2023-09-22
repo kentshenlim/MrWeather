@@ -8,6 +8,9 @@ const color = {
   highlightDim: '#E59272',
   moonFace: '#FBD2AF',
   moonShadow: '#F4B981',
+  weatherCold: '#20c8bb',
+  weatherHot: '#ffbe00',
+  weatherDangerous: 'red',
 };
 
 export default color;

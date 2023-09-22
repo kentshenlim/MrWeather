@@ -30,7 +30,17 @@ export default function Dashboard({ height, dataObj, isTempC, setIsTempC }) {
       <Plate
         param={'Temperature'}
         value={isTempC ? dataObj.tempC + '℃' : dataObj.tempF + 'F'}
-        style={{ height: height, border: `solid ${color.secondary} 3px` }}
+        style={{
+          height: height,
+          border: `solid ${color.secondary} 3px`,
+          backgroundColor: `${
+            dataObj.tempC < 25
+              ? `${color.weatherCold}`
+              : dataObj.tempC < 37
+              ? `${color.weatherHot}`
+              : `${color.weatherDangerous}`
+          }`,
+        }}
         handleClick={() => setIsTempC(!isTempC)}
       >
         <Thermometer />
@@ -65,7 +75,7 @@ export default function Dashboard({ height, dataObj, isTempC, setIsTempC }) {
         style={{
           height: height,
           backgroundColor: `${color.quaternary}`,
-          opacity: '0.5',
+          opacity: `${1 - (0.5 / 100) * dataObj.cloud}`,
         }}
       >
         <Cloud />
