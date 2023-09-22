@@ -1,7 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { CornerDownLeft } from 'react-feather';
 import { styled } from 'styled-components';
-import fetchDataWeather, { processData } from './utils/fetchDataWeather';
 
 import AppTitle from './components/AppTitle';
 import Dashboard from './components/Dashboard';
@@ -10,6 +9,7 @@ import ForecastTable from './components/ForecastTable';
 import Model from './components/Model';
 import Navbar from './components/Navbar';
 import color from './styles/color';
+import fetchDataWeather, { processData } from './utils/fetchDataWeather';
 
 import './App.css';
 

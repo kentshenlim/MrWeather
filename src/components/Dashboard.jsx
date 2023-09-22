@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 import { Cloud, Droplet, Thermometer, Wind } from 'react-feather';
 import { styled } from 'styled-components';
-import { useState } from 'react';
 
 import color from '../styles/color';
 import Plate from './Plate';
@@ -23,6 +23,8 @@ const Wrapper = styled.div`
 `;
 
 export default function Dashboard({ height, dataObj, isTempC, setIsTempC }) {
+  const [isWindK, setIsWindK] = useState(true);
+
   return (
     <Wrapper data-testid="dashboard-wrapper">
       <Plate
@@ -35,7 +37,7 @@ export default function Dashboard({ height, dataObj, isTempC, setIsTempC }) {
       </Plate>
       <Plate
         param={'Humidity'}
-        value={'12%'}
+        value={dataObj.humidity + '%'}
         style={{
           height: height,
           border: `double ${color.secondary} 4px`,
@@ -45,20 +47,21 @@ export default function Dashboard({ height, dataObj, isTempC, setIsTempC }) {
         <Droplet />
       </Plate>
       <Plate
-        param={'Humidity'}
-        value={'12%'}
+        param={'Wind'}
+        value={isWindK ? dataObj.windKPH + 'K/H' : dataObj.windMPH + 'M/H'}
         style={{
           height: height,
           backgroundColor: `${color.ternary}`,
           border: `solid black #83828a`,
           boxShadow: `-2px 2px 10px #83828a`,
         }}
+        handleClick={() => setIsWindK(!isWindK)}
       >
         <Wind />
       </Plate>
       <Plate
-        param={'Humidity'}
-        value={'12%'}
+        param={'Cloud'}
+        value={dataObj.cloud + '%'}
         style={{
           height: height,
           backgroundColor: `${color.quaternary}`,
