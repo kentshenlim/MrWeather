@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { CornerDownLeft } from 'react-feather';
 import { styled } from 'styled-components';
 
+import Loading from './components/Loading';
 import AppTitle from './components/AppTitle';
 import Dashboard from './components/Dashboard';
 import FeelsLike from './components/FeelsLike';
@@ -57,47 +58,31 @@ const ToggleButton = styled.button`
   }
 `;
 
-const mockDataHourly = [
-  ['1000', 23],
-  ['1300', 25],
-  ['1600', 26],
-  ['1900', 23],
-  ['2200', 22],
-  ['0100', 21],
-  ['0400', 19],
-  ['0700', 20],
-];
-
-const mockDataDaily = [
-  ['mon', 23],
-  ['tue', 23],
-  ['wed', 23],
-  ['thu', 23],
-  ['fri', 23],
-  ['sat', 23],
-  ['sun', 23],
-];
-
 function App() {
-  const [location, setLocation] = useState('london');
+  const [location, setLocation] = useState('kulim');
   const [isLoading, setIsLoading] = useState(null);
   const [data, setData] = useState(null);
   const [isTempC, setIsTempC] = useState(true);
   const [isHourly, setIsHourly] = useState(true);
 
-  useEffect(() => {
-    async function fetchAndProcess() {
-      const res = await fetchDataWeather(location);
-      setData(processData(res, { hourGap: 1 }));
-    }
-    fetchAndProcess();
-  }, [location]);
+  // useEffect(() => {
+  //   async function fetchAndProcess() {
+  //     const res = await fetchDataWeather(location);
+  //     setData(processData(res, { hourGap: 1 }));
+  //   }
+  //   fetchAndProcess();
+  // }, [location]);
 
   function handleClickToggle() {
     setIsHourly(!isHourly);
   }
 
-  if (!data) return 'Loading';
+  if (!data)
+    return (
+      <Wrapper>
+        <Loading />
+      </Wrapper>
+    );
 
   return (
     <Wrapper>
