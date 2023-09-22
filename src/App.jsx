@@ -79,7 +79,7 @@ const mockDataDaily = [
 ];
 
 function App() {
-  const [location, setLocation] = useState('london');
+  const [location, setLocation] = useState('malaysia');
   const [isLoading, setIsLoading] = useState(null);
   const [data, setData] = useState(null);
   const [isTempC, setIsTempC] = useState(true);
@@ -118,6 +118,7 @@ function App() {
         />
       </div>
       <FeelsLike
+        iconURL={data.feelsLikeObj.iconURL}
         text={`Feels like: ${
           isTempC
             ? data.feelsLikeObj.tempC + ' ℃'
