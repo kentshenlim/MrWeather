@@ -81,6 +81,7 @@ function processData(goodRes, {hourGap = 1, hourDataCount = 8, dayCount = 3}) {
 
 
     return {
+        dateObj: dateObj,
         location: locationFinal,
         date: dateFinal,
         time: timeFinal,

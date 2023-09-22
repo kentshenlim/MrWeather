@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import { CornerDownLeft } from 'react-feather';
 import { styled } from 'styled-components';
 
-import Loading from './components/Loading';
 import AppTitle from './components/AppTitle';
 import Dashboard from './components/Dashboard';
 import FeelsLike from './components/FeelsLike';
 import ForecastTable from './components/ForecastTable';
+import Loading from './components/Loading';
 import Model from './components/Model';
 import Navbar from './components/Navbar';
 import color from './styles/color';
@@ -59,8 +59,7 @@ const ToggleButton = styled.button`
 `;
 
 function App() {
-  const [location, setLocation] = useState('selangor');
-  const [isLoading, setIsLoading] = useState(true);
+  const [location, setLocation] = useState('dubai');
   const [isLoadingModel, setIsLoadingModel] = useState(true);
   const [data, setData] = useState(null);
   const [isTempC, setIsTempC] = useState(true);
@@ -82,13 +81,16 @@ function App() {
     return (
       <Wrapper>
         <Model setIsLoadingModel={setIsLoadingModel} />
-        <Loading text={!data ? 'Fetching weather data ' : 'Loading model '} />
+        <Loading
+          text={!data ? 'Fetching weather data ' : 'Loading 3D model '}
+        />
       </Wrapper>
     );
 
   return (
     <Wrapper>
-      <Model setIsLoadingModel={setIsLoadingModel} />
+      <Model setIsLoadingModel={setIsLoadingModel} dateObj={data.dateObj} />
+      {/* Must come first to prevent rerender, must render while loading */}
       <Header>
         <Navbar
           location={data.location}

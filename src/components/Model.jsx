@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
+import { useEffect, useRef } from 'react';
 import { styled } from 'styled-components';
 
 import model from '../assets/models/fireInTheSky/scene.gltf';
@@ -19,7 +19,7 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-export default function Model({ setIsLoadingModel }) {
+export default function Model({ setIsLoadingModel, dateObj }) {
   const wrapperRef = useRef(null);
 
   useEffect(() => {
@@ -31,7 +31,6 @@ export default function Model({ setIsLoadingModel }) {
       cameraPositionZ: 0,
       callbackWhenDoneLoading: () => {
         setIsLoadingModel(false);
-        console.log('s');
       },
     });
     container.appendChild(model3D.domElement);
@@ -43,11 +42,12 @@ export default function Model({ setIsLoadingModel }) {
 
   return (
     <Wrapper id="container3D" ref={wrapperRef}>
-      <MoonClock time={new Date()} />
+      <MoonClock time={dateObj} />
     </Wrapper>
   );
 }
 
 Model.propTypes = {
   setIsLoadingModel: PropTypes.func.isRequired,
+  dateObj: PropTypes.instanceOf(Date).isRequired,
 };
