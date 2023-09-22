@@ -35,7 +35,7 @@ const Wrapper = styled.div`
     padding: 0 1rem;
   }
   > *:not(#container3D) {
-    /* z-index: 1; */
+    z-index: 1;
   }
 `;
 
@@ -43,6 +43,7 @@ const Header = styled.div`
   display: flex;
   justify-content: space-between;
   height: 7rem;
+  z-index: 2 !important;
 `;
 
 const ToggleButton = styled.button`
@@ -59,8 +60,8 @@ const ToggleButton = styled.button`
 `;
 
 function App() {
-  const [location, setLocation] = useState('london');
-  const [isLoadingModel, setIsLoadingModel] = useState(true);
+  const [location, setLocation] = useState('kuala lumpur');
+  const [isLoadingModel, setIsLoadingModel] = useState(false);
   const [data, setData] = useState(null);
   const [isTempC, setIsTempC] = useState(true);
   const [isHourly, setIsHourly] = useState(true);
@@ -80,7 +81,7 @@ function App() {
   if (!data || isLoadingModel)
     return (
       <Wrapper>
-        <Model setIsLoadingModel={setIsLoadingModel} />
+        {/* <Model setIsLoadingModel={setIsLoadingModel} /> */}
         {/* Model must come first to prevent rerender, must render model while loading */}
         <Loading
           text={!data ? 'Fetching weather data ' : 'Loading 3D model '}
@@ -90,7 +91,7 @@ function App() {
 
   return (
     <Wrapper>
-      <Model setIsLoadingModel={setIsLoadingModel} dateObj={data.dateObj} />
+      {/* <Model setIsLoadingModel={setIsLoadingModel} dateObj={data.dateObj} /> */}
       {/* Model must come first to prevent rerender, must render model while loading */}
       <Header>
         <Navbar
