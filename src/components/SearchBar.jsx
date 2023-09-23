@@ -77,7 +77,6 @@ const Suggest = styled.div`
 `;
 
 export default function SearchBar({
-  location,
   setLocation,
   locationStatus,
   setLocationStatus,
@@ -181,7 +180,6 @@ export default function SearchBar({
 }
 
 SearchBar.propTypes = {
-  location: PropTypes.string.isRequired,
   setLocation: PropTypes.func.isRequired,
   locationStatus: PropTypes.string.isRequired,
   setLocationStatus: PropTypes.func.isRequired,

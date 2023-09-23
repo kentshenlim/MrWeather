@@ -48,7 +48,6 @@ export default function Navbar({
         <p>{timeStr}</p>
       </LeftWrapper>
       <SearchBar
-        location={location}
         setLocation={setLocation}
         locationStatus={locationStatus}
         setLocationStatus={setLocationStatus}
