@@ -1,4 +1,5 @@
-import { useCallback, useState } from 'react';
+import PropTypes from 'prop-types';
+import { useCallback, useRef, useState } from 'react';
 import { Search } from 'react-feather';
 import { styled } from 'styled-components';
 
@@ -75,9 +76,10 @@ const Suggest = styled.div`
   }
 `;
 
-export default function SearchBar() {
+export default function SearchBar({ setLocation }) {
   const [searchText, setSearchText] = useState('');
   const [optList, setOptList] = useState([]);
+  const inputRef = useRef(null);
 
   const debouncedUpdateOptList = useCallback(
     debounce((searchTextNew) => {
@@ -91,7 +93,6 @@ export default function SearchBar() {
           locations.push({ name, id });
           if (locations.length == 6) break; // Shows only 6
         }
-        console.log(locations);
         setOptList(locations);
       }
 
@@ -109,14 +110,28 @@ export default function SearchBar() {
 
   function handleClickSuggestion(e) {
     setSearchText(e.target.textContent);
+    inputRef.current.focus();
   }
 
   function handleBlur() {
     // Click other region = clear suggestion
     setTimeout(() => {
       setOptList([]);
-    }, 100);
+    }, 200);
     // Time out to allow selecting auto fill before clearing
+  }
+
+  async function handleClickSearch() {
+    const res = await fetchLocation(searchText);
+    if (res.length === 0) {
+      console.log('error');
+      return;
+    }
+    setLocation(searchText);
+  }
+
+  function handleKeyDown(e) {
+    if (e.key == 'Enter') setLocation(searchText);
   }
 
   const autoCompleteJSXArr = optList.map((loc) => (
@@ -130,13 +145,19 @@ export default function SearchBar() {
       <Input
         placeholder="Search City..."
         value={searchText}
+        ref={inputRef}
         onChange={handleChange}
         onBlur={handleBlur}
+        onKeyDown={handleKeyDown}
       ></Input>
-      <Button>
+      <Button onClick={handleClickSearch}>
         <Search color={color.quaternary} />
       </Button>
       <Suggest>{autoCompleteJSXArr}</Suggest>
     </Wrapper>
   );
 }
+
+SearchBar.propTypes = {
+  setLocation: PropTypes.func.isRequired,
+};

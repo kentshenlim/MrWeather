@@ -32,7 +32,7 @@ const LeftWrapper = styled.div`
   }
 `;
 
-export default function Navbar({ location, dateStr, timeStr }) {
+export default function Navbar({ location, setLocation, dateStr, timeStr }) {
   return (
     <Wrapper>
       <LeftWrapper>
@@ -40,13 +40,14 @@ export default function Navbar({ location, dateStr, timeStr }) {
         <p>{dateStr}</p>
         <p>{timeStr}</p>
       </LeftWrapper>
-      <SearchBar />
+      <SearchBar setLocation={setLocation} />
     </Wrapper>
   );
 }
 
 Navbar.propTypes = {
   location: PropTypes.string.isRequired,
+  setLocation: PropTypes.func.isRequired,
   dateStr: PropTypes.string.isRequired,
   timeStr: PropTypes.string.isRequired,
 };
