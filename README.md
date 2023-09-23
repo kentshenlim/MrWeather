@@ -14,7 +14,5 @@ Weather app with dynamic background based on weather.
 ## ToDo
 
 - TODO: test include msw for fetching
-- TODO: location search, including init location and default location is not
-  allowed, including auto complete
 - TODO: github repo: click MrWeather's eyes or forehead
-- TODO: refresh button
+- TODO: extend search bar if button clicked

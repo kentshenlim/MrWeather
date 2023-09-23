@@ -85,6 +85,7 @@ export default function SearchBar({
   const [searchText, setSearchText] = useState('');
   const [optList, setOptList] = useState([]);
   const inputRef = useRef(null);
+  const lastSearchRef = useRef('');
 
   const debouncedUpdateOptList = useCallback(
     debounce((searchTextNew) => {
@@ -128,6 +129,7 @@ export default function SearchBar({
   }
 
   function submit() {
+    lastSearchRef.current = searchText;
     setLocation(searchText);
     setOptList([]);
     setLocationStatus('loading');
@@ -135,7 +137,7 @@ export default function SearchBar({
 
   async function handleClickSearch() {
     if (!searchText.length) return;
-    if (location.toLowerCase() == searchText.toLowerCase()) return; // Do not fetch again if same place
+    if (searchText == lastSearchRef.current) return; // Same text no need search
     const res = await fetchLocation(searchText);
     if (res.length === 0) {
       // No such place
