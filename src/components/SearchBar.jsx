@@ -74,11 +74,14 @@ export default function SearchBar() {
     debounce((searchTextNew) => {
       async function updateOptList(text) {
         const locationsFull = await fetchLocation(text);
-        const locations = locationsFull.map((obj) => ({
-          name: obj.name,
-          id: obj.id,
-        }));
-        console.log(locations);
+        const set = new Set(); // Of name, to remove duplicate
+        const locations = []; // {name, id}
+        for (const { name, id } of locationsFull) {
+          if (set.has(name)) continue;
+          set.add(name);
+          locations.push({ name, id });
+          if (locations.length == 6) break; // Shows only 6
+        }
         setOptList(locations);
       }
 
