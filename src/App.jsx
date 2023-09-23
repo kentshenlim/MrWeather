@@ -65,11 +65,13 @@ function App() {
   const [data, setData] = useState(null);
   const [isTempC, setIsTempC] = useState(true);
   const [isHourly, setIsHourly] = useState(true);
+  const [locationStatus, setLocationStatus] = useState('idle'); // idle, loading, invalid
 
   useEffect(() => {
     async function fetchAndProcess() {
       const res = await fetchDataWeather(location);
       setData(processData(res, { hourGap: 1 }));
+      setLocationStatus('idle');
     }
     fetchAndProcess();
   }, [location]);
@@ -80,6 +82,7 @@ function App() {
 
   if (!data || isLoadingModel)
     return (
+      // App starting
       <Wrapper>
         {/* <Model setIsLoadingModel={setIsLoadingModel} /> */}
         {/* Model must come first to prevent rerender, must render model while loading */}
@@ -99,8 +102,10 @@ function App() {
           dateStr={data.date}
           timeStr={data.time}
           setLocation={setLocation}
+          locationStatus={locationStatus}
+          setLocationStatus={setLocationStatus}
         />
-        <AppTitle />
+        <AppTitle locationStatus={locationStatus} />
       </Header>
       <div>
         <Dashboard

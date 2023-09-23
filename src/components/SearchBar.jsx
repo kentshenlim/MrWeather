@@ -76,7 +76,12 @@ const Suggest = styled.div`
   }
 `;
 
-export default function SearchBar({ setLocation }) {
+export default function SearchBar({
+  location,
+  setLocation,
+  locationStatus,
+  setLocationStatus,
+}) {
   const [searchText, setSearchText] = useState('');
   const [optList, setOptList] = useState([]);
   const inputRef = useRef(null);
@@ -96,7 +101,7 @@ export default function SearchBar({ setLocation }) {
         setOptList(locations);
       }
 
-      if (searchTextNew.length <= 2) setOptList([]);
+      if (searchTextNew.length <= 1) setOptList([]);
       else updateOptList(searchTextNew);
     }, 500),
     []
@@ -106,6 +111,7 @@ export default function SearchBar({ setLocation }) {
     const searchTextNew = e.target.value;
     setSearchText(searchTextNew);
     debouncedUpdateOptList(searchTextNew);
+    setLocationStatus('idle');
   }
 
   function handleClickSuggestion(e) {
@@ -124,19 +130,25 @@ export default function SearchBar({ setLocation }) {
   function submit() {
     setLocation(searchText);
     setOptList([]);
+    setLocationStatus('loading');
   }
 
   async function handleClickSearch() {
+    if (!searchText.length) return;
+    if (location.toLowerCase() == searchText.toLowerCase()) return; // Do not fetch again if same place
     const res = await fetchLocation(searchText);
     if (res.length === 0) {
-      console.log('error');
+      // No such place
+      inputRef.current.focus();
+      setLocationStatus('error');
       return;
     }
     submit();
   }
 
   function handleKeyDown(e) {
-    if (e.key == 'Enter') submit();
+    if (locationStatus == 'loading') return;
+    if (e.key == 'Enter') handleClickSearch();
   }
 
   const autoCompleteJSXArr = optList.map((loc) => (
@@ -146,7 +158,7 @@ export default function SearchBar({ setLocation }) {
   ));
 
   return (
-    <Wrapper>
+    <Wrapper style={locationStatus == 'error' ? { borderColor: 'red' } : {}}>
       <Input
         placeholder="Search City..."
         value={searchText}
@@ -155,7 +167,10 @@ export default function SearchBar({ setLocation }) {
         onBlur={handleBlur}
         onKeyDown={handleKeyDown}
       ></Input>
-      <Button onClick={handleClickSearch}>
+      <Button
+        onClick={handleClickSearch}
+        disabled={locationStatus == 'loading'}
+      >
         <Search color={color.quaternary} />
       </Button>
       <Suggest>{autoCompleteJSXArr}</Suggest>
@@ -164,5 +179,8 @@ export default function SearchBar({ setLocation }) {
 }
 
 SearchBar.propTypes = {
+  location: PropTypes.string.isRequired,
   setLocation: PropTypes.func.isRequired,
+  locationStatus: PropTypes.string.isRequired,
+  setLocationStatus: PropTypes.func.isRequired,
 };
