@@ -121,17 +121,22 @@ export default function SearchBar({ setLocation }) {
     // Time out to allow selecting auto fill before clearing
   }
 
+  function submit() {
+    setLocation(searchText);
+    setOptList([]);
+  }
+
   async function handleClickSearch() {
     const res = await fetchLocation(searchText);
     if (res.length === 0) {
       console.log('error');
       return;
     }
-    setLocation(searchText);
+    submit();
   }
 
   function handleKeyDown(e) {
-    if (e.key == 'Enter') setLocation(searchText);
+    if (e.key == 'Enter') submit();
   }
 
   const autoCompleteJSXArr = optList.map((loc) => (

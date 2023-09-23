@@ -4,7 +4,6 @@ async function fetchLocation(text) {
     const url = base_url + '?' + 'key=' + key + `&q=${text}`;
     const res = await fetch(url);
     const goodRes = await res.json();
-    console.log(goodRes);
     return goodRes;
 }
 
