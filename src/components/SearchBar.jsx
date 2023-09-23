@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Search } from 'react-feather';
 import { styled } from 'styled-components';
 
@@ -66,28 +66,33 @@ const Suggest = styled.div`
   }
 `;
 
-const debouncedFetchLocation = debounce(fetchLocation, 1000);
-
 export default function SearchBar() {
   const [searchText, setSearchText] = useState('');
   const [optList, setOptList] = useState([]);
 
-  async function updateOptList(text) {
-    const locationsFull = await fetchLocation(text);
-    const locations = locationsFull.map((obj) => ({
-      name: obj.name,
-      id: obj.id,
-    }));
-    console.log(locations);
-    setOptList(locations);
-  }
+  const debouncedUpdateOptList = useCallback(
+    debounce((searchTextNew) => {
+      async function updateOptList(text) {
+        const locationsFull = await fetchLocation(text);
+        const locations = locationsFull.map((obj) => ({
+          name: obj.name,
+          id: obj.id,
+        }));
+        console.log(locations);
+        setOptList(locations);
+      }
+
+      if (searchTextNew.length <= 2) setOptList([]);
+      else updateOptList(searchTextNew);
+    }, 500),
+    []
+  );
 
   function handleChange(e) {
     const searchTextNew = e.target.value;
-    console.log(searchTextNew);
     setSearchText(searchTextNew);
     if (searchTextNew.length == 0) setOptList([]);
-    else if (searchTextNew.length > 2) updateOptList(searchTextNew);
+    else if (searchTextNew.length > 2) debouncedUpdateOptList(searchTextNew);
   }
 
   const autoCompleteJSXArr = optList.map((loc) => (
