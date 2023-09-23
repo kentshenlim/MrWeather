@@ -56,13 +56,22 @@ const Button = styled.button`
 const Suggest = styled.div`
   position: absolute;
   width: 100%;
-  border: solid red 3px;
   top: 100%;
-  background-color: green;
+  border-radius: 0.75rem;
+  overflow: hidden;
   > div {
-    /* background-color: blue; */
-    text-align: left;
+    padding: 0.5rem;
     padding-left: 1rem;
+    text-align: left;
+    background-color: ${color.quaternary};
+    color: ${color.secondary};
+    cursor: pointer;
+  }
+  > div:not(:last-child) {
+    border-bottom: dashed ${color.secondary} 2px;
+  }
+  > div:hover {
+    background-color: ${color.highlight};
   }
 `;
 
@@ -98,8 +107,22 @@ export default function SearchBar() {
     debouncedUpdateOptList(searchTextNew);
   }
 
+  function handleClickSuggestion(e) {
+    setSearchText(e.target.textContent);
+  }
+
+  function handleBlur() {
+    // Click other region = clear suggestion
+    console.log('fuck');
+    setTimeout(() => {
+      setOptList([]);
+    }, 100);
+  }
+
   const autoCompleteJSXArr = optList.map((loc) => (
-    <div key={loc.id}>{loc.name}</div>
+    <div key={loc.id} onClick={handleClickSuggestion}>
+      {loc.name}
+    </div>
   ));
 
   return (
@@ -108,6 +131,7 @@ export default function SearchBar() {
         placeholder="Search City..."
         value={searchText}
         onChange={handleChange}
+        onBlur={handleBlur}
       ></Input>
       <Button>
         <Search color={color.quaternary} />
