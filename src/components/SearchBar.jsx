@@ -113,10 +113,10 @@ export default function SearchBar() {
 
   function handleBlur() {
     // Click other region = clear suggestion
-    console.log('fuck');
     setTimeout(() => {
       setOptList([]);
     }, 100);
+    // Time out to allow selecting auto fill before clearing
   }
 
   const autoCompleteJSXArr = optList.map((loc) => (
