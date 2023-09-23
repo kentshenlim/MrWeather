@@ -82,6 +82,7 @@ export default function SearchBar() {
           locations.push({ name, id });
           if (locations.length == 6) break; // Shows only 6
         }
+        console.log(locations);
         setOptList(locations);
       }
 
@@ -94,8 +95,7 @@ export default function SearchBar() {
   function handleChange(e) {
     const searchTextNew = e.target.value;
     setSearchText(searchTextNew);
-    if (searchTextNew.length == 0) setOptList([]);
-    else if (searchTextNew.length > 2) debouncedUpdateOptList(searchTextNew);
+    debouncedUpdateOptList(searchTextNew);
   }
 
   const autoCompleteJSXArr = optList.map((loc) => (
