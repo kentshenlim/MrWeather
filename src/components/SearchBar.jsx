@@ -72,23 +72,23 @@ export default function SearchBar() {
   const [searchText, setSearchText] = useState('');
   const [optList, setOptList] = useState([]);
 
-  function handleChange(e) {
-    setSearchText(e.target.value);
+  async function updateOptList(text) {
+    const locationsFull = await fetchLocation(text);
+    const locations = locationsFull.map((obj) => ({
+      name: obj.name,
+      id: obj.id,
+    }));
+    console.log(locations);
+    setOptList(locations);
   }
 
-  useEffect(() => {
-    async function updateOptList(text) {
-      const locationsFull = await fetchLocation(text);
-      console.log(locationsFull);
-      const locations = locationsFull.map((obj) => ({
-        name: obj.name,
-        id: obj.id,
-      }));
-      console.log(locations);
-      setOptList(locations);
-    }
-    if (searchText.length > 2) updateOptList(searchText);
-  }, [searchText]);
+  function handleChange(e) {
+    const searchTextNew = e.target.value;
+    console.log(searchTextNew);
+    setSearchText(searchTextNew);
+    if (searchTextNew.length == 0) setOptList([]);
+    else if (searchTextNew.length > 2) updateOptList(searchTextNew);
+  }
 
   const autoCompleteJSXArr = optList.map((loc) => (
     <div key={loc.id}>{loc.name}</div>
