@@ -49,5 +49,9 @@ export default function Model({ setIsLoadingModel, dateObj }) {
 
 Model.propTypes = {
   setIsLoadingModel: PropTypes.func.isRequired,
-  dateObj: PropTypes.instanceOf(Date).isRequired,
+  dateObj: PropTypes.instanceOf(Date),
+};
+
+Model.defaultProps = {
+  dateObj: new Date(),
 };

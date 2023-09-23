@@ -1,9 +1,10 @@
+import { useEffect, useRef, useState } from 'react';
 import { Search } from 'react-feather';
 import { styled } from 'styled-components';
 
 import color from '../styles/color';
 import fontSize from '../styles/fontSize';
-import { useState, useEffect } from 'react';
+import debounce from '../utils/debounce';
 import fetchLocation from '../utils/fetchLocation';
 
 const borderRadius = '2rem';
@@ -64,6 +65,8 @@ const Suggest = styled.div`
     padding-left: 1rem;
   }
 `;
+
+const debouncedFetchLocation = debounce(fetchLocation, 1000);
 
 export default function SearchBar() {
   const [searchText, setSearchText] = useState('');
