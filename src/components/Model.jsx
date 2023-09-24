@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useEffect, useRef } from 'react';
 import { styled } from 'styled-components';
 
-import model from '../assets/models/fireInTheSky/scene.gltf';
+// import model from '../assets/models/fireInTheSky/scene.gltf';
 import glbModel from '../assets/models/fire_in_the_sky.glb';
 import loadModel from '../utils/loadModel';
 import MoonClock from './MoonClock';
