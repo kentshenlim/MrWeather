@@ -11,7 +11,8 @@ beforeEach(() => {
 });
 
 it('Have four children', () => {
-  render(<Dashboard height="5rem" />);
+  const mockFn = vi.fn();
+  render(<Dashboard dataObj={{}} isTempC={true} setIsTempC={mockFn} />);
 
   expect(screen.getByTestId('dashboard-wrapper').children.length).toBe(4);
   expect(screen.getAllByText(/test/i).length).toBe(4);

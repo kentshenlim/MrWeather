@@ -8,9 +8,17 @@ it('Props check', () => {
       default: () => <div>Mock Search Bar</div>,
     };
   });
+  const mockFn = vi.fn();
 
   render(
-    <Navbar location="London" dateStr="11 January 2011" timeStr="12:50pm" />
+    <Navbar
+      location="London"
+      setLocation={mockFn}
+      dateStr="11 January 2011"
+      timeStr="12:50pm"
+      locationStatus="idle"
+      setLocationStatus={mockFn}
+    />
   );
 
   expect(screen.getByRole('heading', { name: /london/i })).toBeInTheDocument();

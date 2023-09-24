@@ -11,6 +11,10 @@ Weather app with dynamic background based on weather.
 - [msw](https://github.com/mswjs/msw)
 - [weather api](https://www.weatherapi.com/)
 
+## Credits
+
+- SketchFab
+
 ## ToDo
 
 - TODO: test include msw for fetching
