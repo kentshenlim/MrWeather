@@ -1,4 +1,4 @@
-{
+export default {
   "location": {
     "name": "London",
     "region": "City of London, Greater London",
