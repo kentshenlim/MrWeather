@@ -1,0 +1,1 @@
+import fetchDataWeather, {processData} from "../utils/fetchDataWeather";
