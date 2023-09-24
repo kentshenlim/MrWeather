@@ -3,7 +3,9 @@
 Weather app with a 3D model. Key in location get weather.
 
 <p align="center">
-  <img src="./public/mrWeather.png" alt="MrWeather icon" width="500">
+    <a href="https://google.com">
+        <img src="./public/mrWeather.png" alt="MrWeather icon" width="250">
+    </a>
 </p>
 
 ## Project Overview
