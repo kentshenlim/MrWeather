@@ -1,10 +1,11 @@
 # MrWeather
 
-Weather app with a 3D model. Key in location get weather.
+Weather app with a 3D model. Key in location get weather. Click MrWeather's face
+to visit demo.
 
 <p align="center">
     <a href="https://google.com">
-        <img src="./public/mrWeather.png" alt="MrWeather icon" width="250">
+        <img src="./public/mrWeather.png" alt="MrWeather icon" width="175">
     </a>
 </p>
 
