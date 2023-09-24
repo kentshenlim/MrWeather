@@ -63,6 +63,7 @@ export default function loadModel({
     // Render the scene
     function animate() {
       requestAnimationFrame(animate);
+      if (object) object.rotation.y += 0.01;
       renderer.render(scene, camera);
     }
 
@@ -73,7 +74,7 @@ export default function loadModel({
         const height = container.clientHeight;
         renderer.setSize(width, height);
         camera.aspect = width / height;
-        camera.fov = width < 650 ? 65 : 55;
+        camera.fov = width > 650 ? 55 : width > 520 ? 65 : width > 475 ? 75 : width > 375 ? 85 : 95;
         camera.updateProjectionMatrix();
         }
     window.addEventListener('resize', handleResize);
