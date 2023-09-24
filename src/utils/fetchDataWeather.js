@@ -1,7 +1,7 @@
 import format from "date-fns/format";
 
 async function fetchDataWeather(validLocation) {
-    const base_url = 'http://api.weatherapi.com/v1/forecast.json';
+    const base_url = 'https://api.weatherapi.com/v1/forecast.json';
     // const key = import.meta.env.VITE_WEATHER_API_KEY;
     const key = "806b03d5d46741248aa123547232109" // This API is free
     const url = base_url + '?' + 'key=' + key + `&q=${validLocation}&days=3`;
