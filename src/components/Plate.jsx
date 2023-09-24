@@ -9,6 +9,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 5rem;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   padding: 0.25rem;
@@ -23,6 +24,12 @@ const Wrapper = styled.div`
     margin: 0;
     padding: 0;
     font-size: ${fontSize.smallest};
+  }
+  @media only screen and (max-width: 450px) {
+    height: 4rem;
+    > * {
+      font-size: ${fontSize.xSmallest};
+    }
   }
 `;
 

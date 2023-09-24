@@ -23,9 +23,15 @@ const Wrapper = styled.div`
     )
     100% 1;
   padding-bottom: 0.5rem;
+  @media only screen and (max-width: 520px) {
+    width: 70% !important;
+  }
+  @media only screen and (max-width: 400px) {
+    width: 100% !important;
+  }
 `;
 
-export default function Dashboard({ height, dataObj, isTempC, setIsTempC }) {
+export default function Dashboard({ dataObj, isTempC, setIsTempC }) {
   const [isWindK, setIsWindK] = useState(true);
   const waterAudRef = useRef(null);
   const cloudAudRef = useRef(null);
@@ -36,7 +42,6 @@ export default function Dashboard({ height, dataObj, isTempC, setIsTempC }) {
         param={'Temperature'}
         value={isTempC ? dataObj.tempC + '℃' : dataObj.tempF + 'F'}
         style={{
-          height: height,
           border: `solid ${color.secondary} 3px`,
           backgroundColor: `${
             dataObj.tempC < 25
@@ -54,7 +59,6 @@ export default function Dashboard({ height, dataObj, isTempC, setIsTempC }) {
         param={'Humidity'}
         value={dataObj.humidity + '%'}
         style={{
-          height: height,
           border: `double ${color.secondary} 4px`,
           boxShadow: `0px 0px 6px ${color.ternary}`,
         }}
@@ -75,7 +79,6 @@ export default function Dashboard({ height, dataObj, isTempC, setIsTempC }) {
         param={'Wind'}
         value={isWindK ? dataObj.windKPH + 'K/H' : dataObj.windMPH + 'M/H'}
         style={{
-          height: height,
           backgroundColor: `${color.ternary}`,
           border: `solid black #83828a`,
           boxShadow: `-2px 2px 10px #83828a`,
@@ -88,7 +91,6 @@ export default function Dashboard({ height, dataObj, isTempC, setIsTempC }) {
         param={'Cloud'}
         value={dataObj.cloud + '%'}
         style={{
-          height: height,
           backgroundColor: `rgba(231, 216, 217, ${
             1 - (0.5 / 100) * dataObj.cloud
           })`,
@@ -106,7 +108,6 @@ export default function Dashboard({ height, dataObj, isTempC, setIsTempC }) {
 }
 
 Dashboard.propTypes = {
-  height: PropTypes.string.isRequired,
   dataObj: PropTypes.exact({
     tempC: PropTypes.number,
     tempF: PropTypes.number,

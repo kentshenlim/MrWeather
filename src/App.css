@@ -4,12 +4,19 @@
   text-align: center;
   width: 100vw;
   height: 100vh;
-  min-width: 680px;
-  min-height: 630px;
+  /* min-width: 680px; */
+  min-width: 350px;
+  /* min-height: 630px; */
   background: rgb(154, 173, 192);
   background: linear-gradient(
     0deg,
     rgba(154, 173, 192, 1) 0%,
     rgba(191, 209, 219, 1) 100%
   );
+}
+
+@media only screen and (max-width: 520px) {
+  #root {
+    padding: 1.25rem;
+  }
 }

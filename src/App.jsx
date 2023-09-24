@@ -37,6 +37,10 @@ const Wrapper = styled.div`
   > *:not(#container3D) {
     z-index: 1;
   }
+  @media only screen and (max-width: 520px) {
+    width: 100%;
+    padding: 0.5rem;
+  }
 `;
 
 const Header = styled.div`
@@ -61,7 +65,7 @@ const ToggleButton = styled.button`
 
 function App() {
   const [location, setLocation] = useState('london');
-  const [isLoadingModel, setIsLoadingModel] = useState(true);
+  const [isLoadingModel, setIsLoadingModel] = useState(false);
   const [data, setData] = useState(null);
   const [isTempC, setIsTempC] = useState(true);
   const [isHourly, setIsHourly] = useState(true);
@@ -84,7 +88,7 @@ function App() {
     return (
       // App starting
       <Wrapper>
-        <Model setIsLoadingModel={setIsLoadingModel} />
+        {/* <Model setIsLoadingModel={setIsLoadingModel} /> */}
         {/* Model must come first to prevent rerender, must render model while loading */}
         <Loading
           text={!data ? 'Fetching weather data ' : 'Loading 3D model '}
@@ -94,7 +98,7 @@ function App() {
 
   return (
     <Wrapper>
-      <Model setIsLoadingModel={setIsLoadingModel} dateObj={data.dateObj} />
+      {/* <Model setIsLoadingModel={setIsLoadingModel} dateObj={data.dateObj} /> */}
       {/* Model must come first to prevent rerender, must render model while loading */}
       <Header>
         <Navbar
@@ -109,7 +113,6 @@ function App() {
       </Header>
       <div>
         <Dashboard
-          height={'5rem'}
           dataObj={data.dashboardObj}
           isTempC={isTempC}
           setIsTempC={setIsTempC}

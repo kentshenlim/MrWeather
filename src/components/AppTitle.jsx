@@ -38,6 +38,15 @@ const Wrapper = styled.div`
       transform: rotate(360deg);
     }
   }
+  @media only screen and (max-width: 520px) {
+    width: 7rem;
+    > h1 {
+      font-size: ${fontSize.small};
+    }
+    > h1 > :first-child {
+      display: none;
+    }
+  }
 `;
 
 export default function AppTitle({ locationStatus }) {

@@ -10,6 +10,9 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: flex-start;
   margin-top: 1rem;
+  @media only screen and (max-width: 520px) {
+    width: 100%;
+  }
 `;
 
 const Title = styled.span`
@@ -17,6 +20,9 @@ const Title = styled.span`
   text-align: left;
   font-weight: normal;
   font-size: ${fontSize.largest};
+  @media only screen and (max-width: 520px) {
+    font-size: ${fontSize.normal};
+  }
 `;
 
 const Img = styled.img`
