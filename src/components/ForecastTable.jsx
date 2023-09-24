@@ -12,6 +12,18 @@ const Table = styled.table`
   border-collapse: collapse;
   overflow-x: auto;
   display: flex;
+  scrollbar-width: auto;
+  scrollbar-color: ${color.accent};
+  &::-webkit-scrollbar {
+    width: 16px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: ${color.ternary};
+    border-radius: 10px;
+  }
   > tbody {
     width: 100%;
     overflow-x: auto;
