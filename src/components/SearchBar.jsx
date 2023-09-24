@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Search } from 'react-feather';
 import { styled } from 'styled-components';
 
@@ -33,7 +33,7 @@ const Input = styled.input`
     outline: none;
   }
   @media only screen and (max-width: 850px) {
-    display: none;
+    /* display: none; */
   }
 `;
 
@@ -43,6 +43,12 @@ const Button = styled.button`
   align-items: center;
   border-top-right-radius: ${borderRadius};
   border-bottom-right-radius: ${borderRadius};
+  > * {
+    color: ${color.quaternary};
+  }
+  &:hover > * {
+    color: ${color.highlight};
+  }
   @media only screen and (max-width: 1100px) {
     padding: 0.6rem;
   }
@@ -83,8 +89,26 @@ export default function SearchBar({
 }) {
   const [searchText, setSearchText] = useState('');
   const [optList, setOptList] = useState([]);
+  const [searchBarStatus, setSearchBarStatus] = useState('normal'); // Normal, hidden, extended
   const inputRef = useRef(null);
-  const lastSearchRef = useRef('');
+  const lastSearchRef = useRef('london');
+  const blockOptUpdate = useRef(false); // Block opt from being updated even after submission due to race condition
+
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth < 850) setSearchBarStatus('hidden');
+      else if (window.innerWidth >= 850) setSearchBarStatus('normal');
+    }
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (searchBarStatus == 'extended') inputRef.current.focus();
+  }, [searchBarStatus]);
 
   const debouncedUpdateOptList = useCallback(
     debounce((searchTextNew) => {
@@ -98,7 +122,8 @@ export default function SearchBar({
           locations.push({ name, id });
           if (locations.length == 6) break; // Shows only 6
         }
-        setOptList(locations);
+        if (!blockOptUpdate.current) setOptList(locations);
+        else blockOptUpdate.current = false;
       }
 
       if (searchTextNew.length <= 1) setOptList([]);
@@ -132,9 +157,15 @@ export default function SearchBar({
     setLocation(searchText);
     setOptList([]);
     setLocationStatus('loading');
+    blockOptUpdate.current = true;
   }
 
   async function handleClickSearch() {
+    if (searchBarStatus == 'hidden') {
+      setSearchBarStatus('extended');
+      return;
+    }
+    if (searchBarStatus == 'extended') setSearchBarStatus('hidden');
     if (!searchText.length) return;
     if (searchText == lastSearchRef.current) return; // Same text no need search
     const res = await fetchLocation(searchText);
@@ -158,8 +189,21 @@ export default function SearchBar({
     </div>
   ));
 
+  const wrapperBorderColor = locationStatus == 'error' ? 'red' : color.accent;
+  let inputStyle = {};
+  let wrapperStyle = { borderColor: wrapperBorderColor };
+  if (searchBarStatus == 'hidden' || searchBarStatus == 'extended') {
+    wrapperStyle = {
+      borderColor: wrapperBorderColor,
+      position: 'absolute',
+      top: '50%',
+      right: '5%',
+    };
+  }
+  if (searchBarStatus == 'hidden') inputStyle.display = 'none';
+
   return (
-    <Wrapper style={locationStatus == 'error' ? { borderColor: 'red' } : {}}>
+    <Wrapper style={wrapperStyle}>
       <Input
         placeholder="Search City..."
         value={searchText}
@@ -167,12 +211,13 @@ export default function SearchBar({
         onChange={handleChange}
         onBlur={handleBlur}
         onKeyDown={handleKeyDown}
+        style={inputStyle}
       ></Input>
       <Button
         onClick={handleClickSearch}
         disabled={locationStatus == 'loading'}
       >
-        <Search color={color.quaternary} />
+        <Search />
       </Button>
       <Suggest>{autoCompleteJSXArr}</Suggest>
     </Wrapper>
