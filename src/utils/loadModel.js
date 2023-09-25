@@ -1,7 +1,10 @@
 // Modified based on https://github.com/gjmolter/web-3dmodel-threejs
 import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'; // Allow interaction
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'; // Load gltf file (3D model)
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+// Allow interaction
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+
+// Load gltf file (3D model)
 
 export default function loadModel({
   model,
