@@ -1,7 +1,7 @@
 // Modified based on https://github.com/gjmolter/web-3dmodel-threejs
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { DRACOLoader } from 'three/examples/jsm/loaders/dracoloader';
+import { DRACOLoader } from 'three/examples/jsm/loaders/DracoLoader';
 // Allow interaction
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
