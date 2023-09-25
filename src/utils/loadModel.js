@@ -1,6 +1,7 @@
 // Modified based on https://github.com/gjmolter/web-3dmodel-threejs
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { DRACOLoader } from 'three/examples/jsm/loaders/dracoloader';
 // Allow interaction
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
@@ -24,6 +25,12 @@ export default function loadModel({
     let controls; // OrbitControls
     const manager = new THREE.LoadingManager(() => { callbackWhenDoneLoading() });
     const loader = new GLTFLoader(manager); // Loader for gltf
+
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath(
+      'https://www.gstatic.com/draco/versioned/decoders/1.5.6/'
+    );
+    loader.setDRACOLoader(dracoLoader);
 
 
     // Load the file
