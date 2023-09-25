@@ -2,7 +2,6 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
-// Allow interaction
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
 // Load gltf file (3D model)
@@ -26,11 +25,11 @@ export default function loadModel({
     const manager = new THREE.LoadingManager(() => { callbackWhenDoneLoading() });
     const loader = new GLTFLoader(manager); // Loader for gltf
 
-    const dracoLoader = new DRACOLoader();
-    dracoLoader.setDecoderPath(
+    const dLoader = new DRACOLoader();
+    dLoader.setDecoderPath(
       'https://www.gstatic.com/draco/versioned/decoders/1.5.6/'
     );
-    loader.setDRACOLoader(dracoLoader);
+    loader.setDRACOLoader(dLoader);
 
 
     // Load the file
