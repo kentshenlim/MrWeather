@@ -41,9 +41,9 @@ export default function loadModel({
         object = gltf.scene;
         scene.add(object); // Add this loaded object into scene to be rendered later
       },
-      function (xhr) {
+      function () {
         // While it is loading, log the progress
-        console.log((xhr.loaded / xhr.total) * 100 + '% loaded');
+        // console.log((xhr.loaded / xhr.total) * 100 + '% loaded');
       },
       function (error) {
         // If there is an error, log it
